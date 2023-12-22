@@ -1,9 +1,16 @@
 {
     "name": "kgsint/oms",
-    "require": {},
     "autoload": {
         "psr-4": {
             "App\\": "src/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.28"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }
