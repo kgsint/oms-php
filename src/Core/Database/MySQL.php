@@ -7,13 +7,18 @@ use PDOException;
 
 class MySQL 
 {
-    public function __construct(
-        private string $host = "localhost",
-        private string $name = "order_ms",
-        private string $user = "root",
-        private string $password = "",
-        private ?PDO $db = null,
-    ){}
+    private string $host;
+    private string $name;
+    private string $user;
+    private string $password;
+    private ?PDO $db = null;
+
+    public function __construct(){
+          $this->host = $_ENV['DB_HOST'];
+          $this->name = $_ENV['DB_NAME'];
+          $this->user = $_ENV['DB_USER'];
+          $this->password = $_ENV['DB_PASSWORD'];
+    }
 
     public function connect()
     {
