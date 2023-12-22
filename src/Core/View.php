@@ -13,9 +13,10 @@ class View
 
     public static function make(string $path, array $data = []): self
     {
-        (new static($path, $data))->render();
+        $view = new static($path, $data);
+       $view->render();
 
-        return new static($path, $data);
+        return $view;
     }
 
     public function render()
@@ -28,6 +29,8 @@ class View
         // ['foo' => 'bar'] => ( $foo = 'bar' )
         extract($this->data);
         require $view;
+
+        return true;
     }
 
     public function __toString()
