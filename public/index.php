@@ -25,10 +25,9 @@ try {
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
     $router->resolve($uri, $_SERVER['REQUEST_METHOD']);
-}catch(RouteNotFoundException $e) {
+}catch(RouteNotFoundException | ViewNotFoundException $e) {
     var_dump($e->getMessage());
-}catch(ViewNotFoundException $e) {
-    var_dump($e->getMessage());
+    exit;
 }
 
 // echo "<pre>";
