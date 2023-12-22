@@ -76,6 +76,11 @@ class Router
         throw new RouteNotFoundException('Cannot find route end point for "' . $_SERVER['REQUEST_URI'] . '"');
     }
 
+    public function getRoutes(): array
+    {
+        return $this->routes;
+    }
+
     private function routeToAction(array|callable $action)
     {
         // if callback
