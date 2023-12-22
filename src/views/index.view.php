@@ -53,7 +53,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h3 class="card-muted">33,435,5663</h3>
-                            <span class="text-success">
+                            <span class="text-muted">
                                 Total Products
                             </span>
                         </div>
