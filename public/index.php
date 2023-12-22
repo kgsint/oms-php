@@ -24,7 +24,9 @@ $router->get('/test', [Test::class, 'test']);
 
 
 try {
-    $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    
+    $router->resolve($uri, $_SERVER['REQUEST_METHOD']);
 }catch(RouteNotFoundException $e) {
     var_dump($e->getMessage());
 }catch(ViewNotFoundException $e) {

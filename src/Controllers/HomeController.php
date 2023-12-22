@@ -8,6 +8,6 @@ class HomeController
 {
     public function index(): View
     {
-        return View::make('about', ['foo' => 'bar']);
+        return View::make('index', ['foo' => 'bar']);
     }
 }
