@@ -1,16 +1,23 @@
 <?php
 
+use App\Core\Http\Router;
 use App\Core\Test;
-use App\Hello;
 
 define('BASE_PATH', __DIR__ . '/../');
+define('APP_PATH', __DIR__ . '/../src/');
+define('VIEW_PATH', __DIR__ . '/../src/views/');
 
 require BASE_PATH . 'vendor/autoload.php';
 
+$router = new Router;
 
-$test = new Test;
-$hello = new Hello;
+$router->get('/', function() {
+    var_dump('home');
+});
 
-$test->test();
-echo "<br />";
-$hello->sayHello();
+$router->get('/test', [Test::class, 'test']);
+
+$router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+
+// echo "<pre>";
+// var_dump($_SERVER);
