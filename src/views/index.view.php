@@ -16,16 +16,16 @@
    <div class="container-fluid" style="height: 90vh;">
     <div class="row g-0">
         <!-- side navigation -->
-        <?php require __DIR__ . "/side_navigation.php" ?>
+        <?php require VIEW_PATH . "side_navigation.php" ?>
         <!-- main section -->
         <main class="col-10 bg-secondary">
            <!-- navbar -->
-           <?php require __DIR__ . '/navbar.php'; ?>
+           <?php require VIEW_PATH . 'navbar.php'; ?>
 
            <div class="container-fluid mt-3 p-4">
               <div class="row flex-column flex-lg-row">
                 <h2 class="h6 text-white-50">
-                    Stats
+                    Stats <?= $foo ?>
                 </h2>
                 <div class="col">
                     <div class="card mb-3">

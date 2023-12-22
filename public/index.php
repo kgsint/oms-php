@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\HomeController;
 use App\Core\Http\Router;
 use App\Core\Test;
 use App\Exceptions\RouteNotFoundException;
@@ -12,9 +13,7 @@ require BASE_PATH . 'vendor/autoload.php';
 
 $router = new Router;
 
-$router->get('/', function() {
-    var_dump('home');
-});
+$router->get('/', [HomeController::class, 'index']);
 
 $router->get('/test', [Test::class, 'test']);
 
