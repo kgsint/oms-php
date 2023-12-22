@@ -6,7 +6,7 @@ beforeEach(function() {
     $this->router = new Router;
 });
 
-it('registers get method', function() {
+it('registers get route', function() {
     $router = new Router;
     $router->get('/', fn() => "GET route");
 
@@ -16,7 +16,7 @@ it('registers get method', function() {
     ]);
 });
 
-it('it registers post method', function() {
+it('registers post route', function() {
     $router = new Router;
     $router->post('/store', fn() => "POST route");
 
@@ -26,7 +26,7 @@ it('it registers post method', function() {
     ]);
 });
 
-it('registers put method', function() {
+it('registers put route', function() {
     $router = new Router;
     $router->put('/update', fn() => "PUT route");
 
@@ -36,7 +36,7 @@ it('registers put method', function() {
     ]);
 });
 
-it('it registers patch method', function() {
+it('registers patch route', function() {
     $router = new Router;
     $router->patch('/update', fn() => "PATCH route");
 
@@ -46,7 +46,7 @@ it('it registers patch method', function() {
     ]);
 });
 
-it('it registers delete method', function() {
+it('registers delete route', function() {
     $router = new Router;
     $router->delete('/delete', fn() => "DELETE route");
 
