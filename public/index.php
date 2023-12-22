@@ -6,9 +6,7 @@ use App\Core\Test;
 use App\Exceptions\RouteNotFoundException;
 use App\Exceptions\ViewNotFoundException;
 
-define('BASE_PATH', __DIR__ . '/../');
-define('APP_PATH', __DIR__ . '/../src/');
-define('VIEW_PATH', __DIR__ . '/../src/views/');
+require __DIR__ . "/../src/constants.php";
 
 require BASE_PATH . 'vendor/autoload.php';
 
@@ -25,7 +23,7 @@ $router->get('/test', [Test::class, 'test']);
 
 try {
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-    
+
     $router->resolve($uri, $_SERVER['REQUEST_METHOD']);
 }catch(RouteNotFoundException $e) {
     var_dump($e->getMessage());
