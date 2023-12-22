@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Exceptions\ViewNotFoundException;
+
 class View 
 {
     public function __construct(
@@ -21,9 +23,9 @@ class View
         $view = VIEW_PATH . "{$this->path}" . ".view.php";
 
         if(! file_exists($view)) {
-            throw new \Exception('file not found');
+            throw new ViewNotFoundException($view);
         }
-        
+        // ['foo' => 'bar'] => ( $foo = 'bar' )
         extract($this->data);
         require $view;
     }

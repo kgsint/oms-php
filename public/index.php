@@ -4,6 +4,7 @@ use App\Controllers\HomeController;
 use App\Core\Http\Router;
 use App\Core\Test;
 use App\Exceptions\RouteNotFoundException;
+use App\Exceptions\ViewNotFoundException;
 
 define('BASE_PATH', __DIR__ . '/../');
 define('APP_PATH', __DIR__ . '/../src/');
@@ -25,6 +26,8 @@ $router->get('/test', [Test::class, 'test']);
 try {
     $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 }catch(RouteNotFoundException $e) {
+    var_dump($e->getMessage());
+}catch(ViewNotFoundException $e) {
     var_dump($e->getMessage());
 }
 
