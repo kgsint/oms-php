@@ -1,7 +1,7 @@
 <?php
 
+use App\Core\Database\Database;
 use Dotenv\Dotenv;
-use App\Core\Database\MySQL;
 
 beforeEach(function() {
     $dotenv = Dotenv::createImmutable(__DIR__ . "/../../");
@@ -9,7 +9,7 @@ beforeEach(function() {
 });
 
 it('connects MySQL database', function() {
-    $db = new MySQL;
+    $db = new Database;
 
     expect($db->connect())
                             ->toBeInstanceOf(PDO::class);
