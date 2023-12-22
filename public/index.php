@@ -2,6 +2,7 @@
 
 use App\Core\Http\Router;
 use App\Core\Test;
+use App\Exceptions\RouteNotFoundException;
 
 define('BASE_PATH', __DIR__ . '/../');
 define('APP_PATH', __DIR__ . '/../src/');
@@ -17,7 +18,16 @@ $router->get('/', function() {
 
 $router->get('/test', [Test::class, 'test']);
 
-$router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+// echo "<pre>";
+// print_r($router->routes);
+// exit;
+
+
+try {
+    $router->resolve($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
+}catch(RouteNotFoundException $e) {
+    var_dump($e->getMessage());
+}
 
 // echo "<pre>";
 // var_dump($_SERVER);
