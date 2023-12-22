@@ -68,8 +68,7 @@ class Router
     {
         foreach($this->routes as $route) {
             if($route['uri'] === $uri && $route['method'] === strtoupper($requestMethod)) {
-                $this->routeToAction($route['action']);
-                return;
+                return $this->routeToAction($route['action']);
             }
         }
 
@@ -85,8 +84,7 @@ class Router
     {
         // if callback
         if(is_callable($action)) {
-            call_user_func($action);
-            return;
+            return call_user_func($action);
         }
 
         // if array
@@ -105,8 +103,7 @@ class Router
             }
 
             // resolve
-            call_user_func_array([$class, $action], []);
-            return;
+            return call_user_func_array([$class, $action], []);
         }
         
     }
