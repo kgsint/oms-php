@@ -1,10 +1,9 @@
 <?php
 
-use App\Core\Test;
 use Dotenv\Dotenv;
-use App\Core\Http\Router;
-use App\Core\Database\MySQL;
-use App\Controllers\HomeController;
+use App\Models\User;
+use App\Core\Database\Database;
+use App\Repositories\UserRepository;
 use App\Exceptions\ViewNotFoundException;
 use App\Exceptions\RouteNotFoundException;
 
@@ -19,8 +18,10 @@ require BASE_PATH . 'src/routes.php';
 
 try {
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    // support for PUT, PATCH, DELETE methods
+    $requestMethod = isset($_POST['_method']) ? strtoupper($_POST['_method']) : $_SERVER['REQUEST_METHOD'];
 
-    $router->resolve($uri, $_SERVER['REQUEST_METHOD']);
+    $router->resolve($uri, $requestMethod);
 }catch(RouteNotFoundException | ViewNotFoundException $e) {
     var_dump($e->getMessage());
     exit;
