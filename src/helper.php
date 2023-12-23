@@ -7,3 +7,8 @@ function dd(mixed $value)
     echo "</pre>";
     die;
 }
+
+function mysqlTimestampToDateTime(string $timestamp): DateTime
+{
+    return new DateTime($timestamp);
+}
