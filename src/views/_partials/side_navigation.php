@@ -6,17 +6,16 @@
         </span>
      </h1>
      <div class="list-group text-center text-lg-start">
-        <span class="list-group-item disable d-none d-lg-block">
+        <!-- <span class="list-group-item disable d-none d-lg-block">
             <small>CONTROLS</small>
-        </span>
-        <a href="#" class="list-group-item list-group-item-action active">
+        </span> -->
+        <a href="/" class="list-group-item list-group-item-action <?= isActiveNav('/') ?>">
             <i class="fas fa-home"></i>
             <span class="d-none d-lg-inline">Dashboard</span>
         </a>
-        <a href="#" class="list-group-item list-group-action">
+        <a href="/users" class="list-group-item list-group-action <?= isActiveNav('/users') ?>">
             <i class="fas fa-users"></i>
             <span class="d-none d-lg-inline">Users</span>
-            <!-- <span class="d-none d-lg-inline badge bg-danger rounded-pill float-end">114</span> -->
         </a>
         <a href="#" class="list-group-item list-group-action">
             <i class="fas fa-chart-line"></i>

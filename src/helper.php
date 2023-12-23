@@ -12,3 +12,7 @@ function mysqlTimestampToDateTime(string $timestamp): DateTime
 {
     return new DateTime($timestamp);
 }
+
+function isActiveNav(string $uri) {
+    return parse_url($_SERVER['REQUEST_URI'])['path'] === $uri ? 'active' : '';
+}
