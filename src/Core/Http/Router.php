@@ -95,12 +95,12 @@ class Router
                 throw new ClassNotFoundException("Cannot find class {$class}");
             }
 
-            // if class exists, create an instance 
-            $class  = new $class();
-
             if(! method_exists($class, $action)) {
                 throw new MethodNotFoundException("Method {$action} does not exist in class {$class}");
             }
+
+            // create an instance 
+            $class  = new $class();
 
             // resolve
             return call_user_func_array([$class, $action], []);

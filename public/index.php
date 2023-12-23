@@ -3,6 +3,7 @@
 use Dotenv\Dotenv;
 use App\Models\User;
 use App\Core\Database\Database;
+use App\Exceptions\MethodNotFoundException;
 use App\Repositories\UserRepository;
 use App\Exceptions\ViewNotFoundException;
 use App\Exceptions\RouteNotFoundException;
@@ -22,7 +23,7 @@ try {
     $requestMethod = isset($_POST['_method']) ? strtoupper($_POST['_method']) : $_SERVER['REQUEST_METHOD'];
 
     $router->resolve($uri, $requestMethod);
-}catch(RouteNotFoundException | ViewNotFoundException $e) {
-    var_dump($e->getMessage());
+}catch(RouteNotFoundException | ViewNotFoundException | MethodNotFoundException $e) {
+    print($e->getMessage());
     exit;
 }
