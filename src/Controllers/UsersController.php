@@ -31,6 +31,7 @@ class UsersController
 
     public function store()
     { 
+        // user model
         $user = new User;
         $user->name = $_POST['name'];
         $user->email = $_POST['email'];
@@ -39,8 +40,23 @@ class UsersController
         $user->address = $_POST['address'];
         $user->roleId = $_POST['role_id'];
 
+        // save/create record
         $this->userRepo->save($user);
 
         return redirect('/users/new');
+    }
+
+    public function destroy()
+    {
+        // if no user found, return back with 404 status code
+        if(! $user = $this->userRepo->find($_POST['id'])) {
+            http_response_code(404);
+            return redirect('/users');
+        }
+
+        // delete
+        $this->userRepo->delete($user);
+
+        return redirect('/users');
     }
 }

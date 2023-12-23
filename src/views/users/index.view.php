@@ -43,9 +43,9 @@
                                         <td><?= htmlspecialchars($user->phone) ?></td>
                                         <td><?= htmlspecialchars($user->address) ?></td>
                                         <td>
-                                            <form method="POST" action="">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" value="<?= htmlspecialchars($user->id) ?>" />
+                                            <form method="POST" action="/users">
+                                                <input type="hidden" name="_method" value="DELETE" >
+                                                <input type="hidden" value="<?= htmlspecialchars($user->id) ?>" name="id" >
                                                 <button class="btn btn-link link-danger">Delete</button>
                                             </form>
                                         </td>
