@@ -21,6 +21,9 @@ class View
 
     public function render()
     {
+        // support for optional (.) seperator
+        $this->path = str_replace('.', '/', $this->path);
+
         $view = VIEW_PATH . "{$this->path}" . ".view.php";
 
         if(! file_exists($view)) {
