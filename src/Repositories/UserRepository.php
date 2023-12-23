@@ -15,6 +15,11 @@ class UserRepository
         return $this->db->rows('users');
     }
 
+    public function getCount()
+    {
+        return $this->db->totalCount('users');
+    }
+
     public function find(string|int $id): User|array
     {
         $data =  $this->db->findById($id, 'users');

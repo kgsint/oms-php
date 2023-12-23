@@ -25,13 +25,13 @@
            <div class="container-fluid mt-3 p-4">
               <div class="row flex-column flex-lg-row">
                 <h2 class="h6 text-white-50">
-                    Stats <?= $foo ?>
+                    Stats
                 </h2>
                 <div class="col">
                     <div class="card mb-3">
                         <div class="card-body">
                             <h3 class="card-title">
-                                103,567
+                                <?= $user_count ?>
                             </h3>
                             <span class=" text-muted">
                                 Total Customers

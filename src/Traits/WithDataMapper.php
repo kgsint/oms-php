@@ -21,6 +21,23 @@ trait WithDataMapper
         }
     }
 
+    public function totalCount(string $table)
+    {
+        try {
+            $sql = "SELECT COUNT(id) as total from `{$table}`";
+            
+            $this->db = $this->connect();
+            $stmt = $this->db->prepare($sql);
+
+            $stmt->execute();
+            $row = $stmt->fetch();
+
+            return $row->total;
+        }catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function findById(string | int $id, string $table): object|bool
     {
         try {
