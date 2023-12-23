@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- fontawesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- bootstrap JS -->
-    <script src="/js/bootstrap.bundle.js"></script>
-    <title>OMS</title>
-</head>
-<body>
-   <div class="container-fluid" style="height: 90vh;">
-    <div class="row g-0">
+    <!-- ့header -->
+    <?php require VIEW_PATH . "_partials/header.php" ?>
         <!-- side navigation -->
-        <?php require VIEW_PATH . "side_navigation.php" ?>
+        <?php require VIEW_PATH . "_partials/side_navigation.php" ?>
         <!-- main section -->
         <main class="col-10 bg-secondary">
            <!-- navbar -->
-           <?php require VIEW_PATH . 'navbar.php'; ?>
+           <?php require VIEW_PATH . '_partials/navbar.php'; ?>
 
            <div class="container-fluid mt-3 p-4">
               <div class="row flex-column flex-lg-row">
@@ -102,10 +87,5 @@
               </div>
            </div>
         </main>
-    </div>
-   </div>
-   <footer class="text-center py-4 text-muted mt-auto">
-    &copy; Copyright 2023
-   </footer>
-</body>
-</html>
+
+   <?php require VIEW_PATH . "_partials/footer.php" ?>
