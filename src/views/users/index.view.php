@@ -40,8 +40,8 @@
                                         <td><?= htmlspecialchars($user->id) ?></td>
                                         <td><?= htmlspecialchars($user->name) ?></td>
                                         <td><?= htmlspecialchars($user->email) ?></td>
-                                        <td><?= htmlspecialchars($user->phone) ?></td>
                                         <td><?= htmlspecialchars($user->address) ?></td>
+                                        <td><?= htmlspecialchars($user->phone) ?></td>
                                         <td>
                                             <form method="POST" action="/users">
                                                 <input type="hidden" name="_method" value="DELETE" >

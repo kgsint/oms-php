@@ -19,7 +19,7 @@
                                 <?= $user_count ?>
                             </h3>
                             <span class=" text-muted">
-                                Total Customers
+                                Total Users
                             </span>
                         </div>
                     </div>
