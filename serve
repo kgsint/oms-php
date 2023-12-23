@@ -2,4 +2,5 @@
 
 $portNumber = 8000;
 
+// start/serve local development server
 system("php -S localhost:{$portNumber} -t public");
