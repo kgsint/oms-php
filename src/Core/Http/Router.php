@@ -72,7 +72,7 @@ class Router
             }
         }
 
-        throw new RouteNotFoundException('Cannot find route end point for "' . $_SERVER['REQUEST_URI'] . '"');
+        throw new RouteNotFoundException('Cannot find route end point for "' . $uri . '"');
     }
 
     public function getRoutes(): array
