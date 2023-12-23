@@ -31,7 +31,7 @@
         <span class="list-group-item disabled d-none d-lg-block">
           <small>ACTIONS</small>
         </span>
-        <a href="#" class=" list-group-item list-group-action">
+        <a href="/users/new" class="list-group-item list-group-action <?= isActiveNav('/users/new') ?>">
             <i class="fas fa-user"></i>
             <span class="d-none d-lg-inline">New User</span>
         </a>
