@@ -17,8 +17,13 @@ class UsersController
 
     public function index()
     {
-        return View::make('users/index', [
+        return View::make('users.index', [
             'users' => $this->userRepo->getAll(),
         ]);
+    }
+
+    public function create(): View
+    {
+        return View::make('users.create');
     }
 }
