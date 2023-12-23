@@ -1,8 +1,12 @@
 <?php
 
+use App\Controllers\HomeController;
 use App\Core\Http\Router;
 use App\Core\Test;
+use App\Core\View;
 use App\Exceptions\RouteNotFoundException;
+
+require __DIR__ . "/../../src/constants.php";
 
 it('resolves callback action', function () {
     $router = new Router;
@@ -16,18 +20,14 @@ it('resolves callback action', function () {
 it('resolves array action', function () {
     $router = new Router;
 
-    $router->get('/', [Test::class, 'test']);
+    $router->get('/', [HomeController::class, 'index']);
 
     expect($router->resolve('/', 'GET'))
-                        ->toEqual("test");
+                                    ->toBeInstanceOf(View::class);
 });
 
 it('throws route not found exception when request uri does not exist', function () {
-    $router = new Router;
-
-    visit('/');
-
-    expect(fn() => $router->resolve('/', 'GET'))
-                            ->toThrow(RouteNotFoundException::class);
+    expect(fn() => get('/'))
+                    ->toThrow(RouteNotFoundException::class);
 
 });

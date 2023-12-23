@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Http\Router;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -39,8 +41,9 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function visit(string $uri, string $method = 'GET')
+function get(string $uri)
 {
-    $_SERVER['REQUEST_URI'] = $uri;
-    $_SERVER['REQUEST_METHOD'] = $method;
+    $router = new Router;
+
+    return $router->resolve($uri, 'GET');
 }
