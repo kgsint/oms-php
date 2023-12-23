@@ -15,21 +15,9 @@ require BASE_PATH . 'vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(__DIR__ . "/../");
 $dotenv->load();
 
-$router = new Router;
-
-$router->get('/', [HomeController::class, 'index']);
-
-$router->get('/test', [Test::class, 'test']);
-
-// echo "<pre>";
-// print_r($router->routes);
-// exit;
-
+require BASE_PATH . 'src/routes.php';
 
 try {
-    $db = new MySQL;
-    var_dump($db->connect());
-    exit;
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
     $router->resolve($uri, $_SERVER['REQUEST_METHOD']);
@@ -37,6 +25,3 @@ try {
     var_dump($e->getMessage());
     exit;
 }
-
-// echo "<pre>";
-// var_dump($_SERVER);
