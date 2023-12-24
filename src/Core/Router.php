@@ -5,6 +5,7 @@ namespace App\Core;
 use App\Exceptions\ClassNotFoundException;
 use App\Exceptions\MethodNotFoundException;
 use App\Exceptions\RouteNotFoundException;
+use App\Http\Middlewares\Middleware;
 
 class Router 
 {
@@ -16,6 +17,7 @@ class Router
             'method' => $method,
             'uri' => $uri,
             'action' => $action,
+            'middleware' => null,
         ];
     }
 
@@ -26,6 +28,8 @@ class Router
             uri: $uri,
             action: $action,
         );
+
+        return $this;
     }
 
     public function post(string $uri, callable|array $action)
@@ -35,6 +39,8 @@ class Router
             uri: $uri,
             action: $action,
         );
+
+        return $this;
     }
 
     public function put(string $uri, callable|array $action)
@@ -44,6 +50,8 @@ class Router
             uri: $uri,
             action: $action,
         );
+
+        return $this;
     }
 
     public function patch(string $uri, callable|array $action)
@@ -53,6 +61,8 @@ class Router
             uri: $uri,
             action: $action,
         );
+
+        return $this;
     }
 
     public function delete(string $uri, callable|array $action)
@@ -62,12 +72,17 @@ class Router
             uri: $uri,
             action: $action,
         );
+
+        return $this;
     }
 
     public function resolve(string $uri, string $requestMethod)
     {
         foreach($this->routes as $route) {
             if($route['uri'] === $uri && $route['method'] === strtoupper($requestMethod)) {
+                // middleware layer
+                Middleware::resolve($route['middleware']);
+                // handle route
                 return $this->routeToAction($route['action']);
             }
         }
@@ -105,6 +120,10 @@ class Router
             // resolve
             return call_user_func_array([$class, $action], []);
         }
-        
+    }
+
+    public function middleware(string $key)
+    {
+        $this->routes[array_key_last($this->routes)]['middleware'] = $key;
     }
 }
