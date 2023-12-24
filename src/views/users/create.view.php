@@ -18,32 +18,32 @@
                                     <label for="name" class="form-label">User's name</label>
                                     <input type="text" name="name" id="name" class="form-control">
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_errors']['name'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_errors']['name'] ?? '' ?></small>
+                                    <?php if(isset($_SESSION['_flash']['errors']['name'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['name'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email Address</label>
                                     <input type="email" name="email" id="email" class="form-control">
                                      <!-- validation message -->
-                                     <?php if(isset($_SESSION['_errors']['email'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_errors']['email'] ?? '' ?></small>
+                                     <?php if(isset($_SESSION['_flash']['errors']['email'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['email'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input type="password" name="password" id="password" class="form-control">
                                      <!-- validation message -->
-                                     <?php if(isset($_SESSION['_errors']['password'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_errors']['password'] ?? '' ?></small>
+                                     <?php if(isset($_SESSION['_flash']['errors']['password'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['password'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password_confirm" class="form-label">Confirm Password</label>
                                     <input type="password" name="password_confirmation" id="password_confirm" class="form-control">
                                      <!-- validation message -->
-                                     <?php if(isset($_SESSION['_errors']['password_confirmation'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_errors']['password_confirmation'] ?? '' ?></small>
+                                     <?php if(isset($_SESSION['_flash']['errors']['password_confirmation'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['password_confirmation'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
@@ -55,24 +55,24 @@
                                         <option value="3">Manager</option>
                                     </select>
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_errors']['role_id'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_errors']['role_id'] ?? '' ?></small>
+                                    <?php if(isset($_SESSION['_flash']['errors']['role_id'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['role_id'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone</label>
                                     <input type="text" name="phone" id="phone" class="form-control">
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_errors']['phone'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_errors']['phone'] ?? '' ?></small>
+                                    <?php if(isset($_SESSION['_flash']['errors']['phone'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['phone'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address</label>
                                     <textarea name="address" id="address" cols="30" rows="4" class="form-control"></textarea>
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_errors']['address'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_errors']['address'] ?? '' ?></small>
+                                    <?php if(isset($_SESSION['_flash']['errors']['address'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['address'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <button class="btn btn-primary float-end">Create</button>
