@@ -35,7 +35,7 @@ class UsersController
     { 
         foreach($_POST as $name => $value) {
             if(Validator::required($_POST[$name])) {
-                throw new ValidationException("{$name} is required");
+                ValidationException::throw("{$name} is required");
             }
         }
 

@@ -30,4 +30,5 @@ try {
     exit;
 }catch(ValidationException $e) {
     print_r($e->getMessage());
+    exit;
 }
