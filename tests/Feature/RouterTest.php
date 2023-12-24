@@ -1,12 +1,17 @@
 <?php
 
-use App\Controllers\HomeController;
-use App\Core\Http\Router;
 use App\Core\Test;
 use App\Core\View;
+use Dotenv\Dotenv;
+use App\Core\Http\Router;
+use App\Controllers\HomeController;
 use App\Exceptions\RouteNotFoundException;
+use App\Exceptions\ViewNotFoundException;
 
-require __DIR__ . "/../../src/constants.php";
+beforeEach(function() {
+    $dotenv = Dotenv::createImmutable(__DIR__ . "/../../");
+    $dotenv->load();
+});
 
 it('resolves callback action', function () {
     $router = new Router;
@@ -18,12 +23,18 @@ it('resolves callback action', function () {
 });
 
 it('resolves array action', function () {
+    require __DIR__ . "/../../src/constants.php";
     $router = new Router;
 
     $router->get('/', [HomeController::class, 'index']);
+    $_SERVER['REQUEST_URI'] = '/';
+    $_SERVER['REQUEST_METHOD'] = 'GET';
 
-    expect($router->resolve('/', 'GET'))
-                                    ->toBeInstanceOf(View::class);
+    test()
+            ->assertInstanceOf(View::class, 
+                            $router->resolve($_SERVER['REQUEST_URI'], 
+                            $_SERVER['REQUEST_METHOD'])
+                        );
 });
 
 it('throws route not found exception when request uri does not exist', function () {
