@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\FormRequests;
+namespace App\Http\FormRequests;
 
 use App\Exceptions\ValidationException;
 

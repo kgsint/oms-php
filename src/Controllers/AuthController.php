@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Core\Database\Database;
 use App\Core\View;
-use App\FormRequests\LoginFormRequest;
+use App\Core\Database\Database;
 use App\Repositories\UserRepository;
+use App\Http\FormRequests\LoginFormRequest;
 
 class AuthController 
 {

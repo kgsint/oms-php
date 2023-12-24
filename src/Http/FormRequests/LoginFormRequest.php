@@ -1,26 +1,21 @@
 <?php
 
-namespace App\FormRequests;
+namespace App\Http\FormRequests;
 
 use App\Core\Validator;
-use App\Exceptions\ValidationException;
 
-class UserStoreRequest extends FormRequest
+class LoginFormRequest extends FormRequest
 {
     public function __construct(
        protected array $attributes,
     )
     {
+        parent::__construct($attributes);
         // required validation
         foreach($attributes as $name => $value) {
             if(Validator::required($attributes[$name])) {
                 $this->errors[$name] = str_replace(['-', '_'], ' ', ucfirst($name)) . " cannot be empty";
             }
-        }
-
-        // confirm password validation
-        if($attributes['password'] && ! Validator::confirm($attributes['password'], $attributes['password_confirmation'])) {
-            $this->errors['password'] = "Password confirmation does not match";
         }
     }
 
@@ -34,4 +29,6 @@ class UserStoreRequest extends FormRequest
 
         return $instance;
     }
+
+
 }

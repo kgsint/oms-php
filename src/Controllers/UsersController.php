@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Core\Database\Database;
 use App\Core\View;
-use App\FormRequests\UserStoreRequest;
 use App\Models\User;
+use App\Core\Database\Database;
 use App\Repositories\UserRepository;
+use App\Http\FormRequests\UserStoreRequest;
 
 class UsersController 
 {
