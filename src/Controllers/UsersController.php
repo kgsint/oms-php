@@ -37,7 +37,16 @@ class UsersController
 
         foreach($_POST as $name => $value) {
             if(Validator::required($_POST[$name])) {
-                $errors[$name] = "{$name} is required";
+                // $name = strtoupper($name);
+                $errors[$name] = str_replace(['-', '_'], ' ', ucfirst($name)) . " cannot be empty";
+            }
+        }
+
+        // confirm password validation
+        if(! Validator::confirm($_POST['password'], $_POST['password_confirmation'])) {
+            // only if there is valid, assign new message
+            if(! isset($_POST['password'])) {
+                $errors['password'] = "Password confirmation do not match";
             }
         }
 
@@ -52,7 +61,7 @@ class UsersController
         $user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $user->phone = $_POST['phone'];
         $user->address = $_POST['address'];
-        $user->roleId = $_POST['role_id'];
+        $user->roleId = $_POST['role'];
 
         // save/create record
         $this->userRepo->save($user);

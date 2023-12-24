@@ -64,15 +64,15 @@
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="role_id" class="form-label">Role</label>
-                                    <select name="role_id" id="role_id" class="form-control">
+                                    <label for="role" class="form-label">Role</label>
+                                    <select name="role" id="role" class="form-control">
                                         <option value="">Select role</option>
                                         <option 
                                             value="1" 
                                             <?= 
-                                                isset($_SESSION['_flash']['old']['role_id']) 
+                                                isset($_SESSION['_flash']['old']['role']) 
                                                     && 
-                                                $_SESSION['_flash']['old']['role_id'] == 1 ? 'selected' : ''  
+                                                $_SESSION['_flash']['old']['role'] == 1 ? 'selected' : ''  
                                             ?>
                                         >
                                             User
@@ -80,9 +80,9 @@
                                         <option 
                                             value="2" 
                                             <?= 
-                                                isset($_SESSION['_flash']['old']['role_id']) 
+                                                isset($_SESSION['_flash']['old']['role']) 
                                                     && 
-                                                $_SESSION['_flash']['old']['role_id'] == 2 ? 'selected' : ''  
+                                                $_SESSION['_flash']['old']['role'] == 2 ? 'selected' : ''  
                                             ?>
                                         >
                                             Admin
@@ -90,17 +90,17 @@
                                         <option 
                                             value="3" 
                                             <?= 
-                                                isset($_SESSION['_flash']['old']['role_id']) 
+                                                isset($_SESSION['_flash']['old']['role']) 
                                                     && 
-                                                $_SESSION['_flash']['old']['role_id'] == 3 ? 'selected' : ''  
+                                                $_SESSION['_flash']['old']['role'] == 3 ? 'selected' : ''  
                                             ?>
                                         >
                                             Manager
                                         </option>
                                     </select>
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_flash']['errors']['role_id'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['role_id'] ?? '' ?></small>
+                                    <?php if(isset($_SESSION['_flash']['errors']['role'])) :?>
+                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['role'] ?? '' ?></small>
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
