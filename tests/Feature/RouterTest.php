@@ -1,12 +1,10 @@
 <?php
 
-use App\Core\Test;
 use App\Core\View;
 use Dotenv\Dotenv;
-use App\Core\Http\Router;
+use App\Core\Router;
 use App\Controllers\HomeController;
 use App\Exceptions\RouteNotFoundException;
-use App\Exceptions\ViewNotFoundException;
 
 beforeEach(function() {
     $dotenv = Dotenv::createImmutable(__DIR__ . "/../../");
@@ -38,7 +36,7 @@ it('resolves array action', function () {
 });
 
 it('throws route not found exception when request uri does not exist', function () {
-    expect(fn() => get('/'))
+    expect(fn() => get('/somewhere'))
                     ->toThrow(RouteNotFoundException::class);
 
 });

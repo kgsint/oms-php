@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\Core\Http;
+namespace App\Core;
 
 use App\Exceptions\ClassNotFoundException;
 use App\Exceptions\MethodNotFoundException;

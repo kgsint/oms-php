@@ -1,6 +1,6 @@
 <?php
 
-use App\Core\Http\Router;
+use App\Core\Router;
 
 beforeEach(function() {
     $this->router = new Router;
