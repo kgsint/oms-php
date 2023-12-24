@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use App\Core\Database\Database;
+use App\Core\Validator;
 use App\Core\View;
+use App\Exceptions\ValidationException;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use DateTimeZone;
@@ -31,6 +33,12 @@ class UsersController
 
     public function store()
     { 
+        foreach($_POST as $name => $value) {
+            if(Validator::required($_POST[$name])) {
+                throw new ValidationException("{$name} is required");
+            }
+        }
+
         // user model
         $user = new User;
         $user->name = $_POST['name'];

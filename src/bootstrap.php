@@ -5,6 +5,7 @@ use App\Exceptions\ClassNotFoundException;
 use App\Exceptions\MethodNotFoundException;
 use App\Exceptions\ViewNotFoundException;
 use App\Exceptions\RouteNotFoundException;
+use App\Exceptions\ValidationException;
 
 require __DIR__ . "/constants.php";
 
@@ -27,4 +28,6 @@ try {
 }catch(RouteNotFoundException | ViewNotFoundException | MethodNotFoundException | ClassNotFoundException $e) {
     print($e->getMessage());
     exit;
+}catch(ValidationException $e) {
+    print_r($e->getMessage());
 }
