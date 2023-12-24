@@ -6,11 +6,14 @@ use Exception;
 
 class ValidationException extends Exception
 {
-    public static function throw(string $message)
+    public readonly array $errors;
+
+    public static function throw(array $errors)
     {
         // create a class instance
         $instance = new static;
-
-        throw new $instance($message);
+        $instance->errors = $errors;
+        
+        throw $instance;
     }
 }

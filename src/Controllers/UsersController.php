@@ -33,10 +33,16 @@ class UsersController
 
     public function store()
     { 
+        $errors = [];
+
         foreach($_POST as $name => $value) {
             if(Validator::required($_POST[$name])) {
-                ValidationException::throw("{$name} is required");
+                $errors[$name] = "{$name} is required";
             }
+        }
+
+        if(! empty($errors)) {
+            ValidationException::throw($errors);
         }
 
         // user model

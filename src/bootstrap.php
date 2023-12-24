@@ -29,6 +29,7 @@ try {
     print($e->getMessage());
     exit;
 }catch(ValidationException $e) {
-    print_r($e->getMessage());
+    $_SESSION['_errors'] = $e->errors;
+    header('Location:' . $_SERVER['HTTP_REFERER']);
     exit;
 }
