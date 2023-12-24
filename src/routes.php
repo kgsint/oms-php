@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\AuthController;
 use App\Core\Http\Router;
 use App\Controllers\HomeController;
 use App\Controllers\LoginController;
@@ -13,5 +14,5 @@ $router->get('/users/new', [UsersController::class, 'create']);
 $router->post('/users', [UsersController::class, 'store']);
 $router->delete('/users', [UsersController::class, 'destroy']);
 
-$router->get('/login', [LoginController::class, 'view']);
-$router->post('/login', [LoginController::class, 'login']);
+$router->get('/login', [AuthController::class, 'loginView']);
+$router->post('/login', [AuthController::class, 'login']);

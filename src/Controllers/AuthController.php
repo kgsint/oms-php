@@ -7,7 +7,7 @@ use App\Core\View;
 use App\FormRequests\LoginFormRequest;
 use App\Repositories\UserRepository;
 
-class LoginController 
+class AuthController 
 {
     private UserRepository $userRepo;
 
@@ -17,7 +17,7 @@ class LoginController
     }
 
     // login view
-    public function view()
+    public function loginView()
     {
         return View::make('auth.login');
     }
