@@ -16,7 +16,13 @@
                             <form action="/users" method="POST">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">User's name</label>
-                                    <input type="text" name="name" id="name" class="form-control">
+                                    <input 
+                                        type="text" 
+                                        name="name" 
+                                        id="name" 
+                                        value="<?= $_SESSION['_flash']['old']['name'] ?? '' ?>" 
+                                        class="form-control"
+                                    >
                                     <!-- validation message -->
                                     <?php if(isset($_SESSION['_flash']['errors']['name'])) :?>
                                         <small class="text-danger"><?= $_SESSION['_flash']['errors']['name'] ?? '' ?></small>
@@ -24,7 +30,13 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email Address</label>
-                                    <input type="email" name="email" id="email" class="form-control">
+                                    <input 
+                                        type="email" 
+                                        name="email" 
+                                        id="email" 
+                                        class="form-control" 
+                                        value="<?= $_SESSION['_flash']['old']['email'] ?? '' ?>"
+                                    >
                                      <!-- validation message -->
                                      <?php if(isset($_SESSION['_flash']['errors']['email'])) :?>
                                         <small class="text-danger"><?= $_SESSION['_flash']['errors']['email'] ?? '' ?></small>
@@ -32,7 +44,12 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control">
+                                    <input 
+                                        type="password" 
+                                        name="password" 
+                                        id="password" 
+                                        class="form-control"
+                                    >
                                      <!-- validation message -->
                                      <?php if(isset($_SESSION['_flash']['errors']['password'])) :?>
                                         <small class="text-danger"><?= $_SESSION['_flash']['errors']['password'] ?? '' ?></small>
@@ -47,12 +64,39 @@
                                     <?php endif ;?>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="role_id" class="form-label">Address</label>
+                                    <label for="role_id" class="form-label">Role</label>
                                     <select name="role_id" id="role_id" class="form-control">
                                         <option value="">Select role</option>
-                                        <option value="1">User</option>
-                                        <option value="2">Admin</option>
-                                        <option value="3">Manager</option>
+                                        <option 
+                                            value="1" 
+                                            <?= 
+                                                isset($_SESSION['_flash']['old']['role_id']) 
+                                                    && 
+                                                $_SESSION['_flash']['old']['role_id'] == 1 ? 'selected' : ''  
+                                            ?>
+                                        >
+                                            User
+                                        </option>
+                                        <option 
+                                            value="2" 
+                                            <?= 
+                                                isset($_SESSION['_flash']['old']['role_id']) 
+                                                    && 
+                                                $_SESSION['_flash']['old']['role_id'] == 2 ? 'selected' : ''  
+                                            ?>
+                                        >
+                                            Admin
+                                        </option>
+                                        <option 
+                                            value="3" 
+                                            <?= 
+                                                isset($_SESSION['_flash']['old']['role_id']) 
+                                                    && 
+                                                $_SESSION['_flash']['old']['role_id'] == 3 ? 'selected' : ''  
+                                            ?>
+                                        >
+                                            Manager
+                                        </option>
                                     </select>
                                     <!-- validation message -->
                                     <?php if(isset($_SESSION['_flash']['errors']['role_id'])) :?>
