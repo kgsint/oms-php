@@ -4,8 +4,7 @@ namespace App\Core\Database;
 
 use PDO;
 use PDOException;
-use App\Traits\DataMapper;
-use App\Traits\WithDataMapper;
+use App\Core\Database\Traits\WithDataMapper;
 
 class Database
 {
