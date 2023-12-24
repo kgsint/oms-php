@@ -20,11 +20,13 @@
                                         type="text" 
                                         name="name" 
                                         id="name" 
+                                        class="form-control <?= error('name') ? 'is-invalid' : '' ?>"
                                         value="<?= old('name') ?>" 
-                                        class="form-control"
                                     >
                                     <!-- validation message -->
-                                    <small class="text-danger"><?= error('name') ?></small>
+                                    <?php if(error('name')) : ?>
+                                        <small class="invalid-feedback"><?= error('name') ?></small>
+                                    <?php endif ; ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email Address</label>
@@ -32,11 +34,13 @@
                                         type="email" 
                                         name="email" 
                                         id="email" 
-                                        class="form-control" 
+                                        class="form-control <?= error('email') ? 'is-invalid' : '' ?>" 
                                         value="<?= old('email') ?? '' ?>"
                                     >
                                      <!-- validation message -->
-                                    <small class="text-danger"><?= error('email') ?></small>
+                                    <?php if(error('email')) : ?>
+                                        <small class="invalid-feedback"><?= error('email') ?></small>
+                                    <?php endif ; ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
@@ -44,20 +48,29 @@
                                         type="password" 
                                         name="password" 
                                         id="password" 
-                                        class="form-control"
+                                        class="form-control <?= error('password') ? 'is-invalid' : '' ?>"
                                     >
                                      <!-- validation message -->
-                                    <small class="text-danger"><?= error('password') ?></small>
+                                    <?php if(error('password')) : ?>
+                                        <small class="invalid-feedback"><?= error('password') ?></small>
+                                    <?php endif ; ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password_confirm" class="form-label">Confirm Password</label>
-                                    <input type="password" name="password_confirmation" id="password_confirm" class="form-control">
-                                     <!-- validation message -->
-                                    <small class="text-danger"><?= error('password_confirmation') ?></small>
+                                    <input 
+                                        type="password" 
+                                        name="password_confirmation" 
+                                        id="password_confirm" 
+                                        class="form-control <?= error('password_confirmation') ? 'is-invalid' : '' ?>"
+                                    >
+                                    <!-- validation message -->
+                                    <?php if(error('password_confirmation')) : ?>
+                                        <small class="invalid-feedback"><?= error('password_confirmation') ?></small>
+                                    <?php endif ; ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="role" class="form-label">Role</label>
-                                    <select name="role" id="role" class="form-control">
+                                    <select name="role" id="role" class="form-control <?= error('role') ? 'is-invalid' : '' ?>">
                                         <option value="">Select role</option>
                                         <option 
                                             value="1" 
@@ -85,7 +98,9 @@
                                         </option>
                                     </select>
                                     <!-- validation message -->
-                                    <small class="text-danger"><?= error('role') ?? '' ?></small>
+                                    <?php if(error('role')) : ?>
+                                        <small class="invalid-feedback"><?= error('role') ?></small>
+                                    <?php endif ; ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone</label>
@@ -93,11 +108,13 @@
                                         type="text" 
                                         name="phone" 
                                         id="phone" 
-                                        class="form-control"
+                                        class="form-control <?= error('phone') ? 'is-invalid' : '' ?>"
                                         value="<?= old('phone') ?? '' ?>"
                                     >
                                     <!-- validation message -->
-                                    <small class="text-danger"><?= error('phone') ?></small>
+                                    <?php if(error('phone')) : ?>
+                                        <small class="invalid-feedback"><?= error('phone') ?></small>
+                                    <?php endif ; ?>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address</label>
@@ -106,10 +123,12 @@
                                         id="address" 
                                         cols="30" 
                                         rows="4" 
-                                        class="form-control"
+                                        class="form-control <?= error('address') ? 'is-invalid' : '' ?>"
                                     ><?= old('address') ?></textarea>
                                     <!-- validation message -->
-                                    <small class="text-danger"><?= error('address') ?></small>
+                                    <?php if(error('address')) : ?>
+                                        <small class="invalid-feedback"><?= error('address') ?></small>
+                                    <?php endif ; ?>
                                 </div>
                                 <button class="btn btn-primary float-end">Create</button>
                             </form>
