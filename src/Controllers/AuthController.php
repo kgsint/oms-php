@@ -42,7 +42,18 @@ class AuthController
         session_regenerate_id(true);
 
         return redirect('/');
+    }
 
-        // dd($_POST);
+    public function logout()
+    {
+        // reset session
+        $_SESSION = [];
+        unset($_SESSION['user']);
+
+        // remove browser cookie
+        $params = session_get_cookie_params();
+        setcookie('PHPSESSID', "", time() - 1, $params['path'], $params['domain']);
+
+        return redirect('/login');
     }
 }

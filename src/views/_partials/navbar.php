@@ -11,8 +11,10 @@
                     <a href="#" class="dropdown-item">Profile</a>
                 </li>
                 <li>
-                    <a href="#" class="dropdown-item">Logout</a>
+                    <button form="logout-form" class="dropdown-item">Logout</button>
                 </li>
+
+                <form action="/logout" method="POST" id="logout-form"></form>
             </ul>
         </li>
         <li class="nav-item">

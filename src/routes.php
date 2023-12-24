@@ -16,3 +16,4 @@ $router->delete('/users', [UsersController::class, 'destroy']);
 
 $router->get('/login', [AuthController::class, 'loginView']);
 $router->post('/login', [AuthController::class, 'login']);
+$router->post('/logout', [AuthController::class, 'logout']);

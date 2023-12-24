@@ -29,6 +29,7 @@ function isActiveNav(string $uri): string
 function redirect(string $uri, int $responseCode = 302): void
 {
     header("Location:{$uri}", response_code: $responseCode);
+    exit;
 }
 
 // show validation error
