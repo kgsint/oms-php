@@ -20,13 +20,11 @@
                                         type="text" 
                                         name="name" 
                                         id="name" 
-                                        value="<?= $_SESSION['_flash']['old']['name'] ?? '' ?>" 
+                                        value="<?= old('name') ?>" 
                                         class="form-control"
                                     >
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_flash']['errors']['name'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['name'] ?? '' ?></small>
-                                    <?php endif ;?>
+                                    <small class="text-danger"><?= error('name') ?></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email Address</label>
@@ -35,12 +33,10 @@
                                         name="email" 
                                         id="email" 
                                         class="form-control" 
-                                        value="<?= $_SESSION['_flash']['old']['email'] ?? '' ?>"
+                                        value="<?= old('email') ?? '' ?>"
                                     >
                                      <!-- validation message -->
-                                     <?php if(isset($_SESSION['_flash']['errors']['email'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['email'] ?? '' ?></small>
-                                    <?php endif ;?>
+                                    <small class="text-danger"><?= error('email') ?></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
@@ -51,17 +47,13 @@
                                         class="form-control"
                                     >
                                      <!-- validation message -->
-                                     <?php if(isset($_SESSION['_flash']['errors']['password'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['password'] ?? '' ?></small>
-                                    <?php endif ;?>
+                                    <small class="text-danger"><?= error('password') ?></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="password_confirm" class="form-label">Confirm Password</label>
                                     <input type="password" name="password_confirmation" id="password_confirm" class="form-control">
                                      <!-- validation message -->
-                                     <?php if(isset($_SESSION['_flash']['errors']['password_confirmation'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['password_confirmation'] ?? '' ?></small>
-                                    <?php endif ;?>
+                                    <small class="text-danger"><?= error('password_confirmation') ?></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="role" class="form-label">Role</label>
@@ -70,9 +62,7 @@
                                         <option 
                                             value="1" 
                                             <?= 
-                                                isset($_SESSION['_flash']['old']['role']) 
-                                                    && 
-                                                $_SESSION['_flash']['old']['role'] == 1 ? 'selected' : ''  
+                                               old('role') == 1 ? 'selected' : ''  
                                             ?>
                                         >
                                             User
@@ -80,9 +70,7 @@
                                         <option 
                                             value="2" 
                                             <?= 
-                                                isset($_SESSION['_flash']['old']['role']) 
-                                                    && 
-                                                $_SESSION['_flash']['old']['role'] == 2 ? 'selected' : ''  
+                                                old('role') == 2 ? 'selected' : ''  
                                             ?>
                                         >
                                             Admin
@@ -90,18 +78,14 @@
                                         <option 
                                             value="3" 
                                             <?= 
-                                                isset($_SESSION['_flash']['old']['role']) 
-                                                    && 
-                                                $_SESSION['_flash']['old']['role'] == 3 ? 'selected' : ''  
+                                                old('role') == 3 ? 'selected' : ''  
                                             ?>
                                         >
                                             Manager
                                         </option>
                                     </select>
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_flash']['errors']['role'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['role'] ?? '' ?></small>
-                                    <?php endif ;?>
+                                    <small class="text-danger"><?= error('role') ?? '' ?></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone</label>
@@ -110,12 +94,10 @@
                                         name="phone" 
                                         id="phone" 
                                         class="form-control"
-                                        value="<?= $_SESSION['_flash']['old']['phone'] ?? '' ?>"
+                                        value="<?= old('phone') ?? '' ?>"
                                     >
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_flash']['errors']['phone'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['phone'] ?? '' ?></small>
-                                    <?php endif ;?>
+                                    <small class="text-danger"><?= error('phone') ?></small>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address</label>
@@ -125,11 +107,9 @@
                                         cols="30" 
                                         rows="4" 
                                         class="form-control"
-                                    ><?= $_SESSION['_flash']['old']['address'] ?? '' ?></textarea>
+                                    ><?= old('address') ?></textarea>
                                     <!-- validation message -->
-                                    <?php if(isset($_SESSION['_flash']['errors']['address'])) :?>
-                                        <small class="text-danger"><?= $_SESSION['_flash']['errors']['address'] ?? '' ?></small>
-                                    <?php endif ;?>
+                                    <small class="text-danger"><?= error('address') ?></small>
                                 </div>
                                 <button class="btn btn-primary float-end">Create</button>
                             </form>

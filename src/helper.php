@@ -1,5 +1,8 @@
-<?php 
+<?php
 
+use App\Core\Session;
+
+// dump
 function dd(mixed $value, $typeHint = false): void
 {
     echo "<pre style='background-color: #111; color: white; padding:1em; line-height: 1.8;'>";
@@ -12,6 +15,7 @@ function dd(mixed $value, $typeHint = false): void
     die;
 }
 
+// unix timestamp to datetime
 function mysqlTimestampToDateTime(string $timestamp): DateTime
 {
     return new DateTime($timestamp);
@@ -25,4 +29,16 @@ function isActiveNav(string $uri): string
 function redirect(string $uri, int $responseCode = 302): void
 {
     header("Location:{$uri}", response_code: $responseCode);
+}
+
+// show validation error
+function error(string $key)
+{
+    return Session::error($key);
+}
+
+// repopulate old value from form request after validation
+function old(string $key)
+{
+    return Session::oldValue($key);
 }

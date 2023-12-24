@@ -22,7 +22,7 @@ class UserStoreRequest
 
         // confirm password validation
         if($attributes['password'] && ! Validator::confirm($attributes['password'], $attributes['password_confirmation'])) {
-            $this->errors['password'] = "Password confirmation do not match";
+            $this->errors['password'] = "Password confirmation does not match";
         }
     }
 
