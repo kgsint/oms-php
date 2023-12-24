@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
     <div class="flex-fill"></div>
 
     <navbar class="nav">
@@ -8,7 +8,7 @@
             </a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="#" class="dropdown-item">User Profile</a>
+                    <a href="#" class="dropdown-item">Profile</a>
                 </li>
                 <li>
                     <a href="#" class="dropdown-item">Logout</a>
