@@ -54,6 +54,22 @@ trait WithDataMapper
         }
     }
 
+    public function findByField(string | int $field, string $value, string $table): object|bool
+    {
+        try {
+            $sql = "SELECT * FROM `{$table}` WHERE {$field}=:field";
+
+            // connect
+            $this->db = $this->connect();
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([":field" => $value]);
+
+            return $stmt->fetch();
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     // create or update
     public function save(object $model, string $table) :int|string
     {

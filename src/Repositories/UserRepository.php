@@ -20,13 +20,36 @@ class UserRepository
         return $this->db->totalCount('users');
     }
 
-    public function find(string|int $id): User|array
+    public function find(string|int $id): ?User
     {
         $data =  $this->db->findById($id, 'users');
 
-        // if not found, return empty array
+        // if not found, return null
         if(! $data) {
-            return [];
+            return null;
+        }
+
+        $user = new User;
+        $user->id = $data->id;
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = $data->password;
+        $user->phone = $data->phone;
+        $user->address = $data->address;
+        $user->roleId = $data->role_id;
+        $user->createdAt = mysqlTimestampToDateTime($data->created_at);
+        $user->updatedAt = mysqlTimestampToDateTime($data->updated_at);
+
+        return $user;
+    }
+
+    public function findByEmail(string $email): ?User
+    {
+        $data =  $this->db->findByField('email',$email, 'users');
+
+        // if not found, return null
+        if(! $data) {
+            return null;
         }
 
         $user = new User;

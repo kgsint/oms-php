@@ -14,3 +14,4 @@ $router->post('/users', [UsersController::class, 'store']);
 $router->delete('/users', [UsersController::class, 'destroy']);
 
 $router->get('/login', [LoginController::class, 'view']);
+$router->post('/login', [LoginController::class, 'login']);
