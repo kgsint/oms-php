@@ -5,12 +5,10 @@ namespace App\FormRequests;
 use App\Core\Validator;
 use App\Exceptions\ValidationException;
 
-class UserStoreRequest 
+class UserStoreRequest extends FormRequest
 {
-    public array $errors = [];
-
     public function __construct(
-       array $attributes,
+       protected array $attributes,
     )
     {
         // required validation
@@ -30,8 +28,8 @@ class UserStoreRequest
     {
         $instance = new static($attributes);
 
-        if(! empty($instance->errors)) {
-            ValidationException::throw($instance->errors, $attributes);
+        if($instance->hasErrors()) {
+            $instance->throw();
         }
 
         return $instance;
