@@ -3,12 +3,10 @@
 namespace App\Controllers;
 
 use App\Core\Database\Database;
-use App\Core\Validator;
 use App\Core\View;
-use App\Exceptions\ValidationException;
+use App\FormRequests\UserStoreRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
-use DateTimeZone;
 
 class UsersController 
 {
@@ -33,26 +31,8 @@ class UsersController
 
     public function store()
     { 
-        $errors = [];
-
-        foreach($_POST as $name => $value) {
-            if(Validator::required($_POST[$name])) {
-                // $name = strtoupper($name);
-                $errors[$name] = str_replace(['-', '_'], ' ', ucfirst($name)) . " cannot be empty";
-            }
-        }
-
-        // confirm password validation
-        if(! Validator::confirm($_POST['password'], $_POST['password_confirmation'])) {
-            // only if there is valid, assign new message
-            if(! isset($_POST['password'])) {
-                $errors['password'] = "Password confirmation do not match";
-            }
-        }
-
-        if(! empty($errors)) {
-            ValidationException::throw($errors, $_POST);
-        }
+        // validation
+        UserStoreRequest::validate($_POST);
 
         // user model
         $user = new User;

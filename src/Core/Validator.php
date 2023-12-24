@@ -22,7 +22,7 @@ class Validator
     }
 
     public static function confirm(string $password, string $confirm): bool
-    {
+    {   
         if($password === $confirm) {
             return true;
         }
