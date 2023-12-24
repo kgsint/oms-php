@@ -29,12 +29,15 @@ try {
     print($e->getMessage());
     exit;
 }catch(ValidationException $e) {
+    // assign validation errors and old values to session
     $_SESSION['_flash']['errors'] = $e->errors;
+    $_SESSION['_flash']['old'] = $e->oldValues;
+
     header('Location:' . $_SERVER['HTTP_REFERER'], response_code: 302);
     exit;
 }
 
-// reset validation errors
+// reset validation errors and old values
 if(isset($_SESSION['_flash'])) {
     unset($_SESSION['_flash']);
 }

@@ -42,7 +42,7 @@ class UsersController
         }
 
         if(! empty($errors)) {
-            ValidationException::throw($errors);
+            ValidationException::throw($errors, $_POST);
         }
 
         // user model
