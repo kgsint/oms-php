@@ -18,6 +18,14 @@ class UserStoreRequest extends FormRequest
             }
         }
 
+        if(! Validator::email($attributes['email'])) {
+            $this->errors['email'] = "Please provide a valid email";
+        }
+
+        if(Validator::exists('users', 'email', $attributes['email'])) {
+            $this->errors['email'] = "This email has already been taken";
+        }
+
         // confirm password validation
         if($attributes['password'] && ! Validator::confirm($attributes['password'], $attributes['password_confirmation'])) {
             $this->errors['password'] = "Password confirmation does not match";
