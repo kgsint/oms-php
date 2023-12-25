@@ -29,16 +29,7 @@ class UserRepository
             return null;
         }
 
-        $user = new User;
-        $user->id = $data->id;
-        $user->name = $data->name;
-        $user->email = $data->email;
-        $user->password = $data->password;
-        $user->phone = $data->phone;
-        $user->address = $data->address;
-        $user->roleId = $data->role_id;
-        $user->createdAt = mysqlTimestampToDateTime($data->created_at);
-        $user->updatedAt = mysqlTimestampToDateTime($data->updated_at);
+        $user = $this->setUserModel($data);
 
         return $user;
     }
@@ -52,16 +43,7 @@ class UserRepository
             return null;
         }
 
-        $user = new User;
-        $user->id = $data->id;
-        $user->name = $data->name;
-        $user->email = $data->email;
-        $user->password = $data->password;
-        $user->phone = $data->phone;
-        $user->address = $data->address;
-        $user->roleId = $data->role_id;
-        $user->createdAt = mysqlTimestampToDateTime($data->created_at);
-        $user->updatedAt = mysqlTimestampToDateTime($data->updated_at);
+        $user = $this->setUserModel($data);
 
         return $user;
     }
@@ -74,5 +56,21 @@ class UserRepository
     public function delete(User $user): bool|string
     {
         return $this->db->remove($user, 'users');
+    }
+
+    private function setUserModel(object $data): User
+    {
+        $user = new User;
+        $user->id = $data->id;
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = $data->password;
+        $user->phone = $data->phone;
+        $user->address = $data->address;
+        $user->roleId = $data->role_id;
+        $user->createdAt = mysqlTimestampToDateTime($data->created_at);
+        $user->updatedAt = mysqlTimestampToDateTime($data->updated_at);
+
+        return $user;
     }
 }
