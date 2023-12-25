@@ -52,7 +52,7 @@
 
                     <div class="card mb-3" style="height:280px;">
                        <div class="card-body" style="overflow:auto;">
-                          <div class="text-end">
+                          <div class="text-end mb-2" style="max-width: 400px;">
                             <!-- search -->
                             <form>
                                 <div class="input-group">

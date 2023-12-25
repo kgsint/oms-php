@@ -17,12 +17,16 @@
             <i class="fas fa-users"></i>
             <span class="d-none d-lg-inline">Users</span>
         </a>
+        <a href="/categories" class="list-group-item list-group-action <?= isActiveNav('/categories') ?>">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="d-none d-lg-inline">Categories</span>
+        </a>    
         <a href="#" class="list-group-item list-group-action">
             <i class="fas fa-chart-line"></i>
             <span class="d-none d-lg-inline">Orders</span>
         </a>
         <a href="#" class="list-group-item list-group-action">
-        <i class="fa-solid fa-box"></i>
+            <i class="fa-solid fa-box"></i>
             <span class="d-none d-lg-inline">Products</span>
         </a>
      </div>
@@ -39,5 +43,10 @@
             <i class="fa-solid fa-boxes-stacked"></i>
             <span class="d-none d-lg-inline">New Product</span>
         </a>
+        <a href="#" class=" list-group-item list-group-action">
+            <i class="fa-solid fa-square-plus"></i>
+            <span class="d-none d-lg-inline">New Category</span>
+        </a>
      </div>
 </nav>
+
