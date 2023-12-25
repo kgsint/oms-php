@@ -22,6 +22,11 @@ class CategoryController
         ]);
     }
 
+    public function create()
+    {
+        return View::make('categories.create');
+    }
+
     public function destroy()
     {
         $id = (int) $_POST['id'];

@@ -43,7 +43,7 @@
             <i class="fa-solid fa-boxes-stacked"></i>
             <span class="d-none d-lg-inline">New Product</span>
         </a>
-        <a href="#" class=" list-group-item list-group-action">
+        <a href="/categories/new" class=" list-group-item list-group-action <?= isActiveNav('/categories/new') ?>">
             <i class="fa-solid fa-square-plus"></i>
             <span class="d-none d-lg-inline">New Category</span>
         </a>
