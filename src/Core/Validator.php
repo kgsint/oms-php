@@ -38,12 +38,17 @@ class Validator
         return false;
     }
 
-    public static function exists(string $table, string $field, string $value)
+    public static function exists(string $table, string $field, string $value, ?int $except = null): bool
     {
         $instance = new self;
-        
+
         $row = $instance->db->findByField($field, $value, $table);
 
-        return (bool )$row ?? false;
+        // if there is id to exclude for updating record
+        if($except && $row->id === (int) $except) {
+            return false;
+        }
+
+        return (bool)$row ?? false;
     }
 }
