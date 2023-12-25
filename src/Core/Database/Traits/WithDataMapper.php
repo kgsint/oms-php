@@ -133,6 +133,9 @@ trait WithDataMapper
             'users' => "INSERT INTO `{$table}`
                                     (name, email, password, address, phone, role_id, created_at, updated_at) 
                                     VALUES(:name, :email, :password, :address, :phone, :role_id, NOW(), NOW())",
+            'categories' => "INSERT INTO `{$table}`
+                                            (name, slug, active, created_at, updated_at) 
+                                            VALUES(:name, :slug, :active, NOW(), NOW())",
         };
     }
 
@@ -147,6 +150,11 @@ trait WithDataMapper
                 ':address' => $model->address,
                 ':phone' => $model->phone,
                 ':role_id' => $model?->role_id ?? 1,
+            ],
+            'categories' => [
+                ':name' => $model->name,
+                ':slug' => $model->slug,
+                ':active' => $model->active,
             ],
         };
     }

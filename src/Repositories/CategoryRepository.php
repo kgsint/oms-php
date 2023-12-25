@@ -36,6 +36,11 @@ class CategoryRepository
         return $category;
     }
 
+    public function save(Category $category)
+    {
+        return $this->db->save($category, 'categories');
+    }
+
     public function delete(Category $category)
     {
         $this->db->remove($category, 'categories');

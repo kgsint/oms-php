@@ -2,8 +2,16 @@
 
 namespace App\Core;
 
+use App\Core\Database\Database;
+
 class Validator 
 {
+    private Database $db;
+
+    public function __construct()
+    {
+        $this->db = new Database;
+    }
     public static function required(mixed $input, $min = 1, $max = INF): bool
     {
         // trim
@@ -28,5 +36,14 @@ class Validator
         }
 
         return false;
+    }
+
+    public static function exists(string $table, string $field, string $value)
+    {
+        $instance = new self;
+        
+        $row = $instance->db->findByField($field, $value, $table);
+
+        return (bool )$row ?? false;
     }
 }

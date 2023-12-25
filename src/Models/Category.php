@@ -9,7 +9,7 @@ class Category
     public int $id;
     public string $name;
     public string $slug;
-    public bool $active;
+    public int $active;
     public DateTime $createdAt;
     public DateTime $updatedAt;
 }

@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Core\Database\Database;
 use App\Core\View;
+use App\Http\FormRequests\CategoryStoreRequest;
+use App\Models\Category;
 use App\Repositories\CategoryRepository;
 
 class CategoryController 
@@ -25,6 +27,24 @@ class CategoryController
     public function create()
     {
         return View::make('categories.create');
+    }
+
+    public function store()
+    {
+        // validation
+        CategoryStoreRequest::validate($_POST);
+
+        // dd((int) isset($_POST['active']) ?? 1, true);
+
+        $category = new Category;
+        $category->name = $_POST['name'];
+        $category->slug = convertToSlug($_POST['name']);
+        $category->active = (int) isset($_POST['active']) ??  1;
+
+
+        $this->categoryRepo->save($category);
+
+        return redirect('/categories/new');
     }
 
     public function destroy()

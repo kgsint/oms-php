@@ -18,6 +18,24 @@ function dd(mixed $value, $typeHint = false): void
     echo "</pre>";
 }
 
+// string to slug 
+function convertToSlug(string $string, string $seperator = "-")
+{
+    // Convert string to lowercase
+    $slug = strtolower($string);
+
+    // Replace non-alphanumeric characters with $seperator
+    $slug = preg_replace('/[^a-z0-9-]/', $seperator, $slug);
+
+    // Remove multiple consecutive $seperator
+    $slug = preg_replace('/-+/', $seperator, $slug);
+
+    // Trim $seperator from start and end
+    $slug = trim($slug, $seperator);
+
+    return $slug;
+}
+
 // unix timestamp to datetime
 function mysqlTimestampToDateTime(string $timestamp): DateTime
 {

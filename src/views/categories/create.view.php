@@ -13,7 +13,7 @@
 
                     <div class="card mb-3">
                         <div class="card-body mx-lg-5" style="overflow:auto;">
-                            <form action="/users" method="POST">
+                            <form action="/categories" method="POST">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Category Name</label>
                                     <input 
@@ -30,7 +30,15 @@
                                 </div>
                                 <div class="form-check form-switch">
                                     <label class="form-check-label" for="active">Active</label>
-                                    <input class="form-check-input" type="checkbox" name="active" role="switch" id="active" style="cursor: pointer;">
+                                    <input 
+                                        class="form-check-input" 
+                                        type="checkbox" 
+                                        name="active" 
+                                        role="switch" 
+                                        id="active" 
+                                        style="cursor: pointer;"
+                                        <?= (bool) old('active') ? 'checked' : '' ?>
+                                    >
                                 </div>
                                 <button class="btn btn-primary float-end">Create</button>
                             </form>

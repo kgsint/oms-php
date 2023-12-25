@@ -23,4 +23,5 @@ $router->post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 // categories
 $router->get('/categories', [CategoryController::class, 'index'])->middleware('auth');
 $router->get('/categories/new', [CategoryController::class, 'create'])->middleware('auth');
+$router->post('/categories', [CategoryController::class, 'store'])->middleware('auth');
 $router->delete('/categories', [CategoryController::class, 'destroy'])->middleware('auth');
