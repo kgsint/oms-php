@@ -22,4 +22,20 @@ class CategoryController
         ]);
     }
 
+    public function destroy()
+    {
+        $id = (int) $_POST['id'];
+
+        // return back if not found
+        if(! $category = $this->categoryRepo->find($id)) {
+            http_response_code(404);
+            return redirect('/categories');
+        }
+
+        // delete
+        $this->categoryRepo->delete($category);
+
+        return redirect('/categories');
+    }
+
 }

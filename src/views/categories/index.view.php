@@ -43,7 +43,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a href="/category/edit?id=<?= $category->id ?>" class="btn btn-link">Edit</a>
-                                                <form method="POST" action="/categoris">
+                                                <form method="POST" action="/categories">
                                                         <input type="hidden" name="_method" value="DELETE" >
                                                         <input type="hidden" value="<?= $category->id ?>" name="id" >
                                                         <button class="btn btn-link link-danger">Delete</button>
