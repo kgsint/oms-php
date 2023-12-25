@@ -5,6 +5,7 @@ use App\Controllers\AuthController;
 use App\Controllers\HomeController;
 use App\Controllers\UsersController;
 use App\Controllers\CategoryController;
+use App\Controllers\ProductController;
 
 $router = new Router;
 
@@ -27,3 +28,6 @@ $router->post('/categories', [CategoryController::class, 'store'])->middleware('
 $router->get('/categories/edit', [CategoryController::class, 'edit'])->middleware('auth');
 $router->patch('/categories', [CategoryController::class, 'update'])->middleware('auth');
 $router->delete('/categories', [CategoryController::class, 'destroy'])->middleware('auth');
+
+// products 
+$router->get('/products', [ProductController::class, 'index'])->middleware('auth');

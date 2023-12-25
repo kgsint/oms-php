@@ -21,11 +21,11 @@
             <i class="fa-solid fa-layer-group"></i>
             <span class="d-none d-lg-inline">Categories</span>
         </a>    
-        <a href="#" class="list-group-item list-group-action">
+        <a href="/orders" class="list-group-item list-group-action <?= isActiveNav('/orders') ?>">
             <i class="fas fa-chart-line"></i>
             <span class="d-none d-lg-inline">Orders</span>
         </a>
-        <a href="#" class="list-group-item list-group-action">
+        <a href="/products" class="list-group-item list-group-action <?= isActiveNav('/products') ?>">
             <i class="fa-solid fa-box"></i>
             <span class="d-none d-lg-inline">Products</span>
         </a>
