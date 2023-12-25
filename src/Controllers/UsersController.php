@@ -19,9 +19,15 @@ class UsersController
 
     public function index()
     {
-        return View::make('users.index', [
-            'users' => $this->userRepo->getAll(),
-        ]);
+        
+        // when search
+        if(! empty($_GET['s'])) {
+            $users = $this->userRepo->search($_GET['s']);
+        }else {
+            $users = $this->userRepo->getAll();
+        }
+
+        return View::make('users.index', compact('users'));
     }
 
     public function create(): View

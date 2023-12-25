@@ -6,6 +6,8 @@ use PDOException;
 
 trait WithDataMapper 
 {    
+
+    // all records
     public function rows(string $table): array|string
     {
         try {
@@ -21,6 +23,7 @@ trait WithDataMapper
         }
     }
 
+    // count
     public function totalCount(string $table)
     {
         try {
@@ -38,6 +41,34 @@ trait WithDataMapper
         }
     }
 
+    public function search(string $search, string $table, array $fields)
+    {
+        try {
+            $sql = "SELECT * FROM `{$table}` ";
+
+            // build up the sql query according to field(s)
+            foreach($fields as $index => $field) {
+                if($index === 0) {
+                    $sql .= "WHERE $field LIKE :search ";
+                }else {
+                    $sql .= "OR $field LIKE :search";
+                }
+            }
+
+            $this->db = $this->connect();
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ":search" => "%$search%",
+            ]);
+
+            return $stmt->fetchAll();
+
+        }catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
+    // fetch by id
     public function findById(string | int $id, string $table): object|bool
     {
         try {
@@ -54,6 +85,7 @@ trait WithDataMapper
         }
     }
 
+    // fetch by field
     public function findByField(string | int $field, string $value, string $table): object|bool
     {
         try {

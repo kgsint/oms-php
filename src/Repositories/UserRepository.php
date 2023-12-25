@@ -20,6 +20,11 @@ class UserRepository
         return $this->db->totalCount('users');
     }
 
+    public function search(string $search)
+    {
+        return $this->db->search($search, 'users', ['name', 'email']);
+    }
+
     public function find(string|int $id): ?User
     {
         $data =  $this->db->findById($id, 'users');
@@ -29,6 +34,7 @@ class UserRepository
             return null;
         }
 
+        // transform to User model object
         $user = $this->setUserModel($data);
 
         return $user;
@@ -43,6 +49,7 @@ class UserRepository
             return null;
         }
 
+        // transform to User model object
         $user = $this->setUserModel($data);
 
         return $user;

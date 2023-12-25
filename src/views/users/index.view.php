@@ -13,27 +13,33 @@
 
                     <div class="card mb-3" style="height:280px;">
                         <div class="card-body" style="overflow:auto;">
-                        <?php if(count($users)) :?>
-                        <div class="text-end mb-2" style="max-width: 400px;">
-                            <!-- search -->
-                            <form>
-                                <div class="input-group">
-                                    <input name="s" type="text" class="form-control" placeholder="Search Users..." />
-                                    <button class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
-
-                          <table class="table">
-                            <tr>
-                                <th>#ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Actions</th>
-                            </tr>
-
+                            <div class="text-end mb-2" style="max-width: 400px;">
+                                <!-- search -->
+                                <form>
+                                    <div class="input-group">
+                                        <input 
+                                            type="search"
+                                            name="s"  
+                                            class="form-control" 
+                                            placeholder="Search Users..." 
+                                            value="<?= isset($_GET['s']) ? htmlspecialchars($_GET['s']) : '' ?>"
+                                        />
+                                        <button class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <table class="table">
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                                
+                            <?php if(count($users)) :?>
                                 <!-- loop -->
                                 <?php foreach($users as $user) :?>
                                     <tr>
@@ -51,12 +57,15 @@
                                         </td>
                                     </tr>
                                 <?php endforeach ; ?>
+                                <!-- when there is no user record -->
+                                <?php else: ?>
+                                    <tr>
+                                        <td class="text-center" colspan="6">No User found</td>
+                                    </tr>
+                            <?php endif; ?>
                             </table>
 
-                            <!-- when there is no user record -->
-                            <?php else: ?>
-                                <div class="fw-bold fs-4 text-center">There is no user at the moment.</div>
-                            <?php endif; ?>
+                            
                             </div>
                         </div>
                 </div>
