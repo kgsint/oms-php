@@ -39,7 +39,13 @@
                                         <td><?= $category->id ?></td>
                                         <td><?= htmlspecialchars($category->name) ?></td>
                                         <td><?= htmlspecialchars($category->slug) ?></td>
-                                        <td><?= $category->active ? 'Active' : 'Not Active' ?></td>
+                                        <td>
+                                            <?= 
+                                                $category->active ? 
+                                                    '<span class="text-success">Active</span>' : 
+                                                    '<span class="text-danger">Not Active</span>' 
+                                            ?>
+                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <a href="/categories/edit?id=<?= $category->id ?>" class="btn btn-link">Edit</a>
