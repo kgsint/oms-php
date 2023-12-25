@@ -13,7 +13,7 @@
 
                     <div class="card mb-3">
                         <div class="card-body mx-lg-5" style="overflow:auto;">
-                            <form action="/categories" method="POST">
+                            <form action="/products" method="POST">
                                 <!-- title -->
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Product Title</label>
@@ -44,7 +44,7 @@
                                 </div>
                                 <!-- categories -->
                                 <div class="mb-3">
-                                    <select name="category" id="" class="form-control">
+                                    <select name="category" class="form-control is-invalid">
                                         <option value="">Select Category</option>
                                         <?php foreach($categories as $category) :?>
                                             <option 

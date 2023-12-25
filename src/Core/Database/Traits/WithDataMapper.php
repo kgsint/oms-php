@@ -168,6 +168,9 @@ trait WithDataMapper
             'categories' => "INSERT INTO `{$table}`
                                             (name, slug, active, created_at, updated_at) 
                                             VALUES(:name, :slug, :active, NOW(), NOW())",
+            'products' => "INSERT INTO `{$table}`
+                                            (title, description, active, created_at, updated_at) 
+                                            VALUES(:title, :description, :active, NOW(), NOW())",
         };
     }
 
@@ -188,6 +191,11 @@ trait WithDataMapper
                 ':slug' => $model->slug,
                 ':active' => $model->active,
             ],
+            'products' => [
+                ':title' => $model->title,
+                ':description' => $model->description,
+                ':active' => $model->active,
+            ]
         };
     }
 

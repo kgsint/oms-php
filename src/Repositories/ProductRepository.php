@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Core\Database\Database;
 use App\Models\Category;
 use App\Models\Product;
+use PDOException;
 
 class ProductRepository
 {
@@ -40,6 +41,25 @@ class ProductRepository
     public function save(Product $product)
     {
         return $this->db->save($product, 'products');
+    }
+
+    public function associateWithCategory($productId, $categoryId): int|string
+    {
+        try {
+            $sql = "INSERT INTO category_product(category_id, product_id) VALUES(:category_id, :product_id)";
+
+            $db = $this->db->connect();
+
+            $stmt = $db->prepare($sql);
+            $stmt->execute([
+                ":category_id" => $categoryId,
+                ':product_id' => $productId,
+            ]);
+
+            return (int) $db->lastInsertId();
+        }catch(PDOException $e){
+            return $e->getMessage();
+        }
     }
 
     public function delete(Product $product)

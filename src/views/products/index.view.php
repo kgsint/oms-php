@@ -43,8 +43,8 @@
                                 <?php foreach($products as $product) :?>
                                     <tr>
                                         <td><?= $product->id ?></td>
-                                        <td><?= htmlspecialchars($product->name) ?></td>
-                                        <td><?= htmlspecialchars($product->slug) ?></td>
+                                        <td><?= htmlspecialchars($product->title) ?></td>
+                                        <td><?= htmlspecialchars($product->description) ?></td>
                                         <td>
                                             <?= 
                                                 $product->active ? 
@@ -54,8 +54,8 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="/categories/edit?id=<?= $product->id ?>" class="btn btn-link">Edit</a>
-                                                <form method="POST" action="/categories">
+                                                <a href="/products/edit?id=<?= $product->id ?>" class="btn btn-link">Edit</a>
+                                                <form method="POST" action="/products">
                                                         <input type="hidden" name="_method" value="DELETE" >
                                                         <input type="hidden" value="<?= $product->id ?>" name="id" >
                                                         <button class="btn btn-link link-danger">Delete</button>
