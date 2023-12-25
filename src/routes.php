@@ -31,3 +31,4 @@ $router->delete('/categories', [CategoryController::class, 'destroy'])->middlewa
 
 // products 
 $router->get('/products', [ProductController::class, 'index'])->middleware('auth');
+$router->get('/products/new', [ProductController::class, 'create'])->middleware('auth');

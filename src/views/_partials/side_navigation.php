@@ -39,7 +39,7 @@
             <i class="fas fa-user"></i>
             <span class="d-none d-lg-inline">New User</span>
         </a>
-        <a href="#" class=" list-group-item list-group-action">
+        <a href="/products/new" class=" list-group-item list-group-action <?= isActiveNav('/products/new') ?>">
             <i class="fa-solid fa-boxes-stacked"></i>
             <span class="d-none d-lg-inline">New Product</span>
         </a>
