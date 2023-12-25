@@ -34,4 +34,9 @@ class Auth
 
         return $this->userRepo->find($_SESSION['user']['id']);
     }
+
+    public function __call($name, $arguments)
+    {
+        call_user_func($name, [$arguments]);
+    }
 }

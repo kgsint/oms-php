@@ -1,18 +1,21 @@
 <?php
 
+use App\Core\Auth;
 use App\Core\Session;
+use App\Models\User;
 
 // dump
 function dd(mixed $value, $typeHint = false): void
 {
     echo "<pre style='background-color: #111; color: white; padding:1em; line-height: 1.8;'>";
-    if($typeHint) {
-        var_dump($value);
-    }else {
-        print_r($value);
-    }
+        if($typeHint) {
+            var_dump($value);
+        }else {
+            print_r($value);
+        }
+        echo "</pre>";
+        die;
     echo "</pre>";
-    die;
 }
 
 // unix timestamp to datetime
@@ -43,3 +46,20 @@ function old(string $key)
 {
     return Session::oldValue($key);
 }
+
+// Auth class
+function auth(): Auth
+{
+    return new Auth;
+}
+
+function check(): bool
+{
+    return auth()->check();
+}
+
+function user(): ?User
+{
+    return auth()->user();
+}
+// end Auth class
