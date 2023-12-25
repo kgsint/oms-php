@@ -16,6 +16,11 @@ class CategoryRepository
         return $this->db->rows('categories');
     }
 
+    public function search(string $search)
+    {
+        return $this->db->search($search, 'categories', ['name', 'slug']);
+    }
+
     public function find(string|int $id): ?Category
     {
         $data =  $this->db->findById($id, 'categories');

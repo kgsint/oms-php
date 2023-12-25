@@ -20,9 +20,13 @@ class CategoryController
     
     public function index(): View
     {
-        return View::make('categories.index', [
-            'categories' => $this->categoryRepo->getAll(),
-        ]);
+        $categories = $this->categoryRepo->getAll();
+        // when search
+        if(! empty($_GET['s'])) {
+            $categories = $this->categoryRepo->search($_GET['s']);
+        }
+
+        return View::make('categories.index', compact('categories'));
     }
 
     public function create()

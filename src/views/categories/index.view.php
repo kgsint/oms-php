@@ -13,26 +13,32 @@
 
                     <div class="card mb-3">
                         <div class="card-body" style="overflow:auto;">
-                    <?php if(count($categories)) :?>
-                        <div class="text-end mb-2" style="max-width: 400px;">
-                            <!-- search -->
-                            <form>
-                                <div class="input-group">
-                                    <input name="s" type="text" class="form-control" placeholder="Search Categories..." autocomplete="off" />
-                                    <button class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></button>
-                                </div>
-                            </form>
-                          </div>
-
-                          <table class="table">
-                            <tr>
-                                <th>#ID</th>
-                                <th>Name</th>
-                                <th>Slug</th>
-                                <th>Active</th>
-                                <th>Actions</th>
-                            </tr>
-
+                            <div class="text-end mb-2" style="max-width: 400px;">
+                                <!-- search -->
+                                <form>
+                                    <div class="input-group">
+                                        <input 
+                                            name="s" type="text" 
+                                            class="form-control" 
+                                            placeholder="Search Categories..." 
+                                            autocomplete="off" 
+                                            value="<?= isset($_GET['s']) ? htmlspecialchars($_GET['s']) : '' ?>"
+                                        />
+                                        <button class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <table class="table">
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>Name</th>
+                                    <th>Slug</th>
+                                    <th>Active</th>
+                                    <th>Actions</th>
+                                </tr>
+                                
+                            <?php if(count($categories)) :?>
                                 <!-- loop -->
                                 <?php foreach($categories as $category) :?>
                                     <tr>
@@ -58,12 +64,15 @@
                                         </td>
                                     </tr>
                                 <?php endforeach ; ?>
+                                <!-- when there is no category record -->
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="5" class="text-center">No Category found</td>
+                                </tr>
+                            <?php endif; ?>
                             </table>
 
-                            <!-- when there is no category record -->
-                            <?php else: ?>
-                                <div class="fw-bold fs-4 text-center">There is no category.</div>
-                            <?php endif; ?>
+                            
                             </div>
                         </div>
                 </div>
