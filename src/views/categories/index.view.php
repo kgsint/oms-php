@@ -42,7 +42,7 @@
                                         <td><?= $category->active ? 'Active' : 'Not Active' ?></td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="/category/edit?id=<?= $category->id ?>" class="btn btn-link">Edit</a>
+                                                <a href="/categories/edit?id=<?= $category->id ?>" class="btn btn-link">Edit</a>
                                                 <form method="POST" action="/categories">
                                                         <input type="hidden" name="_method" value="DELETE" >
                                                         <input type="hidden" value="<?= $category->id ?>" name="id" >

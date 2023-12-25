@@ -167,6 +167,9 @@ trait WithDataMapper
                                 SET name=:name, email=:email, password=:password, address=:address, phone=:phone, role_id=:role_id, updated_at=NOW()
                                 WHERE :id=id
                                     ",
+            'categories' => "UPDATE `{$table}`
+                                        SET name=:name, slug=:slug, active=:active, updated_at=NOW()
+                                        WHERE :id=id",
         };
     }
 
@@ -181,7 +184,13 @@ trait WithDataMapper
                 ':password' => $model->password,
                 ':address' => $model->address,
                 ':phone' => $model->phone,
-                ":role_id" => $model->roleId,
+                ':role_id' => $model->roleId,
+            ],
+            'categories' => [
+                ':id' => $model->id,
+                ':name' => $model->name,
+                ':slug' => $model->slug,
+                ':active' => $model->active,
             ],
         };
     }

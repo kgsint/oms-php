@@ -60,9 +60,9 @@ function error(string $key)
 }
 
 // repopulate old value from form request after validation
-function old(string $key)
+function old(string $key, mixed $value = '')
 {
-    return Session::oldValue($key);
+    return !Session::oldValue($key) ? $value : Session::oldValue($key);
 }
 
 // Auth class

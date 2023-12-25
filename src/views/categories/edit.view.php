@@ -9,11 +9,15 @@
 
            <div class="container-fluid p-4">
                 <div class="">
-                    <h2 class="h4 text-white">Add new Category</h2>
+                    <h2 class="h4 text-white">Edit Category</h2>
 
+                    <a href="/categories" class="btn btn-link">Back</a>
                     <div class="card mb-3">
                         <div class="card-body mx-lg-5" style="overflow:auto;">
                             <form action="/categories" method="POST">
+                                <input type="hidden" name="_method" value="PATCH">
+                                <!-- id -->
+                                <input type="hidden" name="id" value="<?= $category->id ?>">
                                 <!-- name -->
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Category Name</label>
@@ -22,7 +26,7 @@
                                         name="name" 
                                         id="name" 
                                         class="form-control <?= error('name') ? 'is-invalid' : '' ?>"
-                                        value="<?= old('name') ?>" 
+                                        value="<?= old('name', $category->name) ?>" 
                                     >
                                     <!-- validation message -->
                                     <?php if(error('name')) : ?>
@@ -39,10 +43,10 @@
                                         role="switch" 
                                         id="active" 
                                         style="cursor: pointer;"
-                                        <?= (bool) old('active') ? 'checked' : '' ?>
+                                        <?= (bool) $category->active || (bool) old('active') ? 'checked' : '' ?>
                                     >
                                 </div>
-                                <button class="btn btn-primary float-end">Create</button>
+                                <button class="btn btn-primary float-end">Update</button>
                             </form>
                         </div>
                     </div>
