@@ -19,16 +19,4 @@ class LoginFormRequest extends FormRequest
         }
     }
 
-    public static function validate(array $attributes): self
-    {
-        $instance = new static($attributes);
-
-        if($instance->hasErrors()) {
-            $instance->throw();
-        }
-
-        return $instance;
-    }
-
-
 }

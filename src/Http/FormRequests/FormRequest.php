@@ -12,6 +12,16 @@ class FormRequest
         protected array $attributes
         ){}
 
+    public static function validate(array $attributes): self
+    {
+        $instance = new static($attributes);
+
+        if($instance->hasErrors()) {
+            $instance->throw();
+        }
+
+        return $instance;
+    }
     
     public function hasErrors(): bool
     {
