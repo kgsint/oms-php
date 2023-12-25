@@ -11,14 +11,14 @@
                 <div class="">
                     <h2 class="h4 text-white">Categories</h2>
 
-                    <div class="card mb-3" style="height:280px;">
+                    <div class="card mb-3">
                         <div class="card-body" style="overflow:auto;">
-                        <?php if(count([[1, 2]])) :?>
+                    <?php if(count($categories)) :?>
                         <div class="text-end mb-2" style="max-width: 400px;">
                             <!-- search -->
                             <form>
                                 <div class="input-group">
-                                    <input name="s" type="text" class="form-control" placeholder="Search Categories..." />
+                                    <input name="s" type="text" class="form-control" placeholder="Search Categories..." autocomplete="off" />
                                     <button class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></button>
                                 </div>
                             </form>
@@ -34,22 +34,24 @@
                             </tr>
 
                                 <!-- loop -->
+                                <?php foreach($categories as $category) :?>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Category One</td>
-                                        <td>category-one</td>
-                                        <td>Yes</td>
+                                        <td><?= $category->id ?></td>
+                                        <td><?= htmlspecialchars($category->name) ?></td>
+                                        <td><?= htmlspecialchars($category->slug) ?></td>
+                                        <td><?= $category->active ? 'Active' : 'Not Active' ?></td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <a href="" class="btn btn-link">Update</a>
-                                                <form method="POST" action="/users">
+                                                <a href="/category/edit?id=<?= $category->id ?>" class="btn btn-link">Edit</a>
+                                                <form method="POST" action="/categoris">
                                                         <input type="hidden" name="_method" value="DELETE" >
-                                                        <input type="hidden" value="" name="id" >
+                                                        <input type="hidden" value="<?= $category->id ?>" name="id" >
                                                         <button class="btn btn-link link-danger">Delete</button>
                                                 </form>
                                             </div>
                                         </td>
                                     </tr>
+                                <?php endforeach ; ?>
                             </table>
 
                             <!-- when there is no category record -->
