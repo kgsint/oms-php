@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Core\Database\Database;
 use App\Core\View;
 use App\Repositories\CategoryRepository;
-use App\Repositories\UserRepository;
 
 class CategoryController 
 {
