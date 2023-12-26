@@ -12,7 +12,7 @@ use App\Repositories\CategoryRepository;
 
 class CategoryController 
 {
-    private CategoryRepository $categoryRepo;
+    private CategoryRepositoryInterface $categoryRepo;
 
     public function __construct()
     {

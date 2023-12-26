@@ -14,8 +14,8 @@ use App\Repositories\ProductRepository;
 
 class ProductController 
 {
-    private ProductRepository $productRepo;
-    private CategoryRepository $categoryRepo;
+    private ProductRepositoryInterface $productRepo;
+    private CategoryRepositoryInterface $categoryRepo;
 
     public function __construct()
     {

@@ -14,7 +14,7 @@ use App\Http\FormRequests\UserStoreRequest;
 
 class UsersController 
 {
-    private UserRepository $userRepo;
+    private UserRepositoryInterface $userRepo;
 
     public function __construct()
     {
