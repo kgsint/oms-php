@@ -2,24 +2,40 @@
 
 namespace App\Core;
 
-use App\Core\Container\Container;
+use App\Contracts\UserRepositoryInterface;
+use App\Core\Container;
+use App\Core\Database\Database;
 use App\Exceptions\ValidationException;
 use App\Exceptions\ViewNotFoundException;
 use App\Exceptions\ClassNotFoundException;
 use App\Exceptions\RouteNotFoundException;
 use App\Exceptions\MethodNotFoundException;
+use App\Repositories\UserRepository;
 
 class App 
 {
-    protected Container $container;
+    public static Container $container;
 
     public function __construct(
-        private Router $router
+        private Router $router,
     )
     {
+        static::$container = new Container;
+    }
 
+    // bind via container bindings
+    public function bind(string $key, callable $concrete): void
+    {
+        static::$container->bind($key, $concrete);
+    }
+
+    // resolve dependencies via container
+    public static function resolve(string $key): mixed
+    {
+        return static::$container->resolve($key);
     }
     
+    // run app
     public function run()
     {
         // resolve route
