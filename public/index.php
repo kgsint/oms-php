@@ -1,5 +1,10 @@
 <?php
 
+use App\Core\App;
+
 session_start();
 
-require __DIR__ . "/../src/bootstrap.php";
+/** @var App $app */
+$app = require __DIR__ . "/../src/bootstrap.php";
+
+$app->run();
