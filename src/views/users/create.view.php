@@ -73,25 +73,25 @@
                                     <select name="role" id="role" class="form-control <?= error('role') ? 'is-invalid' : '' ?>">
                                         <option value="">Select role</option>
                                         <option 
-                                            value="1" 
+                                            value="<?= USER ?>" 
                                             <?= 
-                                               old('role') == 1 ? 'selected' : ''  
+                                               old('role') == USER ? 'selected' : ''  
                                             ?>
                                         >
                                             User
                                         </option>
                                         <option 
-                                            value="2" 
+                                            value="<?= ADMIN ?>" 
                                             <?= 
-                                                old('role') == 2 ? 'selected' : ''  
+                                                old('role') == ADMIN ? 'selected' : ''  
                                             ?>
                                         >
                                             Admin
                                         </option>
                                         <option 
-                                            value="3" 
+                                            value="<?= MANAGER ?>" 
                                             <?= 
-                                                old('role') == 3 ? 'selected' : ''  
+                                                old('role') == MANAGER ? 'selected' : ''  
                                             ?>
                                         >
                                             Manager
