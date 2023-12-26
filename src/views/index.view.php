@@ -16,7 +16,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h3 class="card-title">
-                                <?= $user_count ?>
+                                <?= $users_count ?>
                             </h3>
                             <span class=" text-muted">
                                 Total Users
@@ -37,7 +37,7 @@
                 <div class="col">
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h3 class="card-muted">33,435,5663</h3>
+                            <h3 class="card-muted"><?= $products_count ?></h3>
                             <span class="text-muted">
                                 Total Products
                             </span>

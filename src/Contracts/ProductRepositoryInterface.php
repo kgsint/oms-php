@@ -8,6 +8,8 @@ interface ProductRepositoryInterface
 {
     public function getAll(): array;
 
+    public function getCount(): int;
+
     public function find(string|int $id): ?Product;
 
     /**

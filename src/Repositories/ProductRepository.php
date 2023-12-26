@@ -18,6 +18,11 @@ class ProductRepository implements ProductRepositoryInterface
         return $this->db->rows('products');
     }
 
+    public function getCount(): int
+    {
+        return $this->db->totalCount('products');
+    }
+
     public function find(string|int $id): ?Product
     {
         $data =  $this->db->findById($id, 'products');
