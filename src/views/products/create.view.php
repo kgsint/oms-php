@@ -44,22 +44,35 @@
                                 </div>
                                 <!-- categories -->
                                 <div class="mb-3">
-                                    <select name="category" class="form-control <?= (bool) error('category') ? 'is-invalid' : '' ?>">
-                                        <option value="">Select Category</option>
-                                        <?php foreach($categories as $category) :?>
-                                            <option 
-                                                value="<?= $category->id ?>"
-                                                <?= (int) old('category') === $category->id ? 'selected' : '' ?>
+                                    <label for="" class="form-label">Please select category or categories</label>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <?php foreach($categories as $index => $category) :?>
+                                            <div class="d-flex align-items-center form-check">
+                                              <input 
+                                                type="checkbox" 
+                                                class="form-check-input <?= (bool) error('category') ? 'is-invalid' : '' ?>" 
+                                                value="<?= $category->id ?>" 
+                                                id="category-id-<?= $category->id ?>"
+                                                style="cursor:pointer;"
+                                                name="category[]"
+                                                <?= old('category') && in_array($category->id, old('category'))  ? 'checked' : '' ?>
                                             >
-                                                <?= htmlspecialchars($category->name) ?>
-                                            </option>
-                                        <?php endforeach ;?>
-                                    </select>
+                                              <label 
+                                                class="form-check-label p-2" 
+                                                for="category-id-<?= $category->id ?>"
+                                                style="user-select: none;cursor: pointer;"
+                                            >
+                                                <?= ucfirst($category->name) ?>
+                                              </label>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
                                     <!-- validation message -->
                                     <?php if(error('category')) : ?>
-                                        <small class="invalid-feedback"><?= error('category') ?></small>
+                                        <small class="text-danger"><?= error('category') ?></small>
                                     <?php endif ; ?>
                                 </div>
+                                
                                 <!-- active switch toggler -->
                                 <div class="form-check form-switch">
                                     <label class="form-check-label" for="active">Active</label>

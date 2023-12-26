@@ -46,13 +46,15 @@ class ProductController
         $product = new Product;
         $product->title = $_POST['title'];
         $product->description = $_POST['description'];
-        $product->active = (int) isset($_POST['active']) ?? 1;
+        $product->active = (int) isset($_POST['active']);
 
         // save to products table
         $id = $this->productRepo->save($product);
 
         // associate with intermediate table (category_product)
-        $this->productRepo->associateWithCategory($id, (int) $_POST['category']);
+        foreach($_POST['category'] as $categoryId) {
+            $this->productRepo->associateWithCategory($id, (int) $categoryId);
+        }
 
         return redirect('/products/new');
         

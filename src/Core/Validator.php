@@ -14,11 +14,21 @@ class Validator
     }
     public static function required(mixed $input, $min = 1, $max = INF): bool
     {
-        // trim
-        $input = trim($input);
+        // string
+        if(is_string($input)) {
+            // string
+            $input = trim($input);
 
-        if(empty($input) || strlen($input) < $min || strlen($input) > $max) {
-            return true;
+            if(empty($input) || strlen($input) < $min || strlen($input) > $max) {
+                return true;
+            }
+        }
+
+        // array
+        if(is_array($input)) {
+            if(count($input) === 0 || count($input) < $min || count($input) > $max) {
+                return true;
+            }
         }
 
         return false;

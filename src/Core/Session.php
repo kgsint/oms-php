@@ -9,7 +9,7 @@ class Session
         return $_SESSION['_flash']['errors'][$key] ?? '';
     }
 
-    public static function oldValue(string $key): string
+    public static function oldValue(string $key): string|array
     {
         return $_SESSION['_flash']['old'][$key] ?? '';
     }
