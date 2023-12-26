@@ -24,7 +24,7 @@ trait WithDataMapper
     }
 
     // count
-    public function totalCount(string $table)
+    public function totalCount(string $table): int|string
     {
         try {
             $sql = "SELECT COUNT(id) as total from `{$table}`";
@@ -35,13 +35,13 @@ trait WithDataMapper
             $stmt->execute();
             $row = $stmt->fetch();
 
-            return $row->total;
+            return (int) $row->total;
         }catch(PDOException $e) {
             return $e->getMessage();
         }
     }
 
-    public function search(string $search, string $table, array $fields)
+    public function search(string $search, string $table, array $fields): array|string
     {
         try {
             $sql = "SELECT * FROM `{$table}` ";
@@ -122,7 +122,7 @@ trait WithDataMapper
                     $this->updateDataToExecute($model, $table)
                 );
 
-                return $model->id;
+                return (int) $model->id;
                 
             } else {
                 // insert

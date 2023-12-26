@@ -2,21 +2,22 @@
 
 namespace App\Repositories;
 
+use App\Contracts\CategoryRepositoryInterface;
 use App\Core\Database\Database;
 use App\Models\Category;
 
-class CategoryRepository
+class CategoryRepository implements CategoryRepositoryInterface
 {
     public function __construct(
         private Database $db,
     ){}
 
-    public function getAll()
+    public function getAll(): array
     {
         return $this->db->rows('categories');
     }
 
-    public function search(string $search)
+    public function search(string $search): array
     {
         return $this->db->search($search, 'categories', ['name', 'slug']);
     }
@@ -41,7 +42,7 @@ class CategoryRepository
         return $category;
     }
 
-    public function save(Category $category)
+    public function save(Category $category): int
     {
         return $this->db->save($category, 'categories');
     }

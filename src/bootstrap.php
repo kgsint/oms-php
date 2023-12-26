@@ -1,6 +1,13 @@
 <?php
 
+use App\Contracts\CategoryRepositoryInterface;
+use App\Contracts\ProductRepositoryInterface;
+use App\Contracts\UserRepositoryInterface;
 use App\Core\App;
+use App\Core\Database\Database;
+use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
+use App\Repositories\UserRepository;
 use Dotenv\Dotenv;
 
 require __DIR__ . "/constants.php";
@@ -16,5 +23,10 @@ $router = require BASE_PATH . 'src/routes.php';
 
 // app instance
 $app = new App($router);
+
+// register/bind class entries
+$app->bind(UserRepositoryInterface::class, fn() => new UserRepository(new Database));
+$app->bind(CategoryRepositoryInterface::class, fn() => new CategoryRepository(new Database));
+$app->bind(ProductRepositoryInterface::class, fn() => new ProductRepository(new Database));
 
 return $app;

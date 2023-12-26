@@ -1,10 +1,11 @@
 <?php
 namespace App\Repositories;
 
+use App\Contracts\UserRepositoryInterface;
 use App\Core\Database\Database;
 use App\Models\User;
 
-class UserRepository 
+class UserRepository implements UserRepositoryInterface
 {
     public function __construct(
         private Database $db,
@@ -15,7 +16,7 @@ class UserRepository
         return $this->db->rows('users');
     }
 
-    public function getCount()
+    public function getCount(): int
     {
         return $this->db->totalCount('users');
     }
@@ -55,7 +56,10 @@ class UserRepository
         return $user;
     }
 
-    public function save(User $user): int|string
+    /**
+     * @return $id of the currently created or updated user record
+     */
+    public function save(User $user): int
     {
         return $this->db->save($user, 'users');
     }

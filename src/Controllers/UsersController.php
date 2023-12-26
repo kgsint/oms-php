@@ -2,9 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Contracts\UserRepositoryInterface;
+use App\Core\App;
+use App\Core\Container;
 use App\Core\View;
 use App\Models\User;
 use App\Core\Database\Database;
+use App\Core\Router;
 use App\Repositories\UserRepository;
 use App\Http\FormRequests\UserStoreRequest;
 
@@ -14,10 +18,10 @@ class UsersController
 
     public function __construct()
     {
-        $this->userRepo = new UserRepository(new Database);
+        $this->userRepo = App::resolve(UserRepositoryInterface::class);
     }
 
-    public function index()
+    public function index(): View
     {
         $users = $this->userRepo->getAll();
         

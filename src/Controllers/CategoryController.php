@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-use App\Core\Database\Database;
+use App\Contracts\CategoryRepositoryInterface;
+use App\Core\App;
 use App\Core\View;
 use App\Http\FormRequests\CategoryStoreRequest;
 use App\Http\FormRequests\CategoryUpdateRequest;
@@ -15,7 +16,7 @@ class CategoryController
 
     public function __construct()
     {
-        $this->categoryRepo = new CategoryRepository(new Database);
+        $this->categoryRepo = App::resolve(CategoryRepositoryInterface::class);
     }
     
     public function index(): View

@@ -2,18 +2,18 @@
 
 namespace App\Repositories;
 
+use App\Contracts\ProductRepositoryInterface;
 use App\Core\Database\Database;
-use App\Models\Category;
 use App\Models\Product;
 use PDOException;
 
-class ProductRepository
+class ProductRepository implements ProductRepositoryInterface
 {
     public function __construct(
         private Database $db,
     ){}
 
-    public function getAll()
+    public function getAll(): array
     {
         return $this->db->rows('products');
     }
@@ -38,7 +38,7 @@ class ProductRepository
         return $product;
     }
 
-    public function save(Product $product)
+    public function save(Product $product): int
     {
         return $this->db->save($product, 'products');
     }

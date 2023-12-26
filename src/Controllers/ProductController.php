@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Contracts\CategoryRepositoryInterface;
+use App\Contracts\ProductRepositoryInterface;
+use App\Core\App;
 use App\Core\Database\Database;
 use App\Core\View;
 use App\Http\FormRequests\ProductStoreRequest;
@@ -16,8 +19,8 @@ class ProductController
 
     public function __construct()
     {
-        $this->productRepo = new ProductRepository(new Database);
-        $this->categoryRepo = new CategoryRepository(new Database);
+        $this->productRepo = App::resolve(ProductRepositoryInterface::class);
+        $this->categoryRepo = App::resolve(CategoryRepositoryInterface::class);
     }
 
     public function index()
