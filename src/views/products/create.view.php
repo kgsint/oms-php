@@ -44,7 +44,7 @@
                                 </div>
                                 <!-- categories -->
                                 <div class="mb-3">
-                                    <select name="category" class="form-control is-invalid">
+                                    <select name="category" class="form-control <?= (bool) error('category') ? 'is-invalid' : '' ?>">
                                         <option value="">Select Category</option>
                                         <?php foreach($categories as $category) :?>
                                             <option 
