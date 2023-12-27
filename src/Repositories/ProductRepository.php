@@ -43,10 +43,8 @@ class ProductRepository implements ProductRepositoryInterface
         }
     }
 
-    public function find(string|int $id): Product|string
+    public function find(string|int $id): Product|null|string
     {
-        $data =  $this->db->findById($id, 'products');
-
         try {
             $db = $this->db->connect();
 
@@ -69,8 +67,12 @@ class ProductRepository implements ProductRepositoryInterface
             return $e->getMessage();
         }
 
+        if(! $data->id) {
+            return null;
+        }
+
         // if not found, return null
-        if(! $data) {
+        if(empty($data)) {
             return null;
         }
 

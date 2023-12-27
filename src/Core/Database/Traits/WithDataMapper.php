@@ -205,11 +205,13 @@ trait WithDataMapper
         return match ($table) {
             'users' => "UPDATE `{$table}`
                                 SET name=:name, email=:email, password=:password, address=:address, phone=:phone, role_id=:role_id, updated_at=NOW()
-                                WHERE :id=id
-                                    ",
+                                WHERE id=:id",
             'categories' => "UPDATE `{$table}`
                                         SET name=:name, slug=:slug, active=:active, updated_at=NOW()
-                                        WHERE :id=id",
+                                        WHERE id=:id",
+            'products' => "UPDATE `{$table}` 
+                                    SET title=:title, description=:description, active=:active, updated_at=NOW()
+                                    WHERE id=:id",
         };
     }
 
@@ -230,6 +232,12 @@ trait WithDataMapper
                 ':id' => $model->id,
                 ':name' => $model->name,
                 ':slug' => $model->slug,
+                ':active' => $model->active,
+            ],
+            'products' => [
+                ':id' => $model->id,
+                ':title' => $model->title,
+                ':description' => $model->description,
                 ':active' => $model->active,
             ],
         };

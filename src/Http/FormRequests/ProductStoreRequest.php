@@ -15,10 +15,8 @@ class ProductStoreRequest extends FormRequest
         // required validation
         foreach($attributes as $name => $value) {
             // active field is nullable and default is false (0)
-            // if($name !== 'active') {
-                if(Validator::required($attributes[$name])) {
-                    $this->errors[$name] = str_replace(['-', '_'], ' ', ucfirst($name)) . " cannot be empty";
-                // }
+            if(Validator::required($attributes[$name])) {
+                $this->errors[$name] = str_replace(['-', '_'], ' ', ucfirst($name)) . " cannot be empty";
             }
         }
 

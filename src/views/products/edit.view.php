@@ -15,6 +15,8 @@
                     <div class="card mb-3">
                         <div class="card-body mx-lg-5" style="overflow:auto;">
                             <form action="/products" method="POST">
+                                <input type="hidden" name="_method" value="PATCH">
+                                <input type="hidden" name="id" value="<?= $product->id ?>">
                                 <!-- title -->
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Product Title</label>
@@ -51,11 +53,11 @@
                                             <div class="d-flex align-items-center form-check">
                                               <input 
                                                 type="checkbox" 
-                                                class="form-check-input <?= (bool) error('category') ? 'is-invalid' : '' ?>" 
+                                                class="form-check-input <?= (bool) error('categories') ? 'is-invalid' : '' ?>" 
                                                 value="<?= $category->id ?>" 
                                                 id="category-id-<?= $category->id ?>"
                                                 style="cursor:pointer;"
-                                                name="category[]"
+                                                name="categories[]"
                                                 <?= old('category') && in_array($category->id, old('category'))  ? 'checked' : '' ?>
                                                 <?= in_array($category->name, $product->categories) ? 'checked' : '' ?>
                                             >
@@ -70,8 +72,8 @@
                                         <?php endforeach; ?>
                                     </div>
                                     <!-- validation message -->
-                                    <?php if(error('category')) : ?>
-                                        <small class="text-danger"><?= error('category') ?></small>
+                                    <?php if(error('categories')) : ?>
+                                        <small class="text-danger"><?= error('categories') ?></small>
                                     <?php endif ; ?>
                                 </div>
                                 
@@ -88,7 +90,7 @@
                                         <?= (bool) old('active', $product->active) ? 'checked' : '' ?>
                                     >
                                 </div>
-                                <button class="btn btn-primary float-end">Add</button>
+                                <button class="btn btn-primary float-end">Edit</button>
                             </form>
                         </div>
                     </div>

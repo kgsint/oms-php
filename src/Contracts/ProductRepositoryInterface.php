@@ -12,7 +12,7 @@ interface ProductRepositoryInterface
 
     public function getWithCategories();
 
-    public function find(string|int $id): Product|string;
+    public function find(string|int $id): Product|null|string;
 
     /**
      * @return $id of the currently created or updated product record

@@ -8,6 +8,7 @@ use App\Core\App;
 use App\Core\Database\Database;
 use App\Core\View;
 use App\Http\FormRequests\ProductStoreRequest;
+use App\Http\FormRequests\ProductUpdateRequest;
 use App\Models\Product;
 use App\Repositories\CategoryRepository;
 use App\Repositories\ProductRepository;
@@ -65,9 +66,44 @@ class ProductController
     {
         $id = (int) $_GET['id'];
 
+        // abort if not found
+        if(! $product = $this->productRepo->find($id)) {
+            abort(404);
+        };
+
         return View::make('products.edit', [
-            'product' => $this->productRepo->find($id),
+            'product' => $product,
             'categories' => $this->categoryRepo->getAll(),
         ]);
+    }
+
+    public function update()
+    {
+        $id = (int) $_POST['id'];
+
+        // abort if not found
+        if(! $product = $this->productRepo->find($id)) {
+            abort(404);
+        };
+
+        // validate
+        ProductUpdateRequest::validate($_POST);
+
+        // set product model
+        $product->title = $_POST['title'];
+        $product->description = $_POST['description'];
+        $product->active = (int) isset($_POST['active']);
+        // update
+        $this->productRepo->save($product);
+
+        // delete records from intermediate/pivot table
+        $this->productRepo->disassociateWithCategories($id);
+
+        // then renew
+        foreach($_POST['categories'] as $categoryId) {
+            $this->productRepo->associateWithCategory($id, (int) $categoryId);
+        }
+
+        return redirect('/products');
     }
 }

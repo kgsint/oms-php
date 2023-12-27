@@ -74,8 +74,6 @@ class CategoryController
         // validation
         CategoryUpdateRequest::validate($_POST);
 
-        $category = $this->categoryRepo->find((int) $_POST['id']);
-
         $category->name = $_POST['name'];
         $category->active = (int) isset($_POST['active']) ??  1;
 

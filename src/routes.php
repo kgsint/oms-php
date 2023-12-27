@@ -34,5 +34,6 @@ $router->get('/products', [ProductController::class, 'index'])->middleware('auth
 $router->get('/products/new', [ProductController::class, 'create'])->middleware('auth');
 $router->post('/products', [ProductController::class, 'store'])->middleware('auth');
 $router->get('/products/edit', [ProductController::class, 'edit'])->middleware('auth');
+$router->patch('/products', [ProductController::class, 'update'])->middleware('auth');
 
 return $router;

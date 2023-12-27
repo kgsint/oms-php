@@ -5,12 +5,7 @@ namespace App\Controllers;
 use App\Contracts\ProductRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Core\App;
-use App\Core\Database\Database;
-use App\Core\Database\MySQL;
 use App\Core\View;
-use App\Models\User;
-use App\Repositories\ProductRepository;
-use App\Repositories\UserRepository;
 
 class HomeController 
 {

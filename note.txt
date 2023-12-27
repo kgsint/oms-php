@@ -1,0 +1,18 @@
+<!-- categories -->
+<div class="mb-3">
+    <select name="category" class="form-control <?= (bool) error('category') ? 'is-invalid' : '' ?>" multiple aria-label="multiple select example">
+        <option value="">Select Category</option>
+        <?php foreach($categories as $category) :?>
+            <option 
+                value="<?= $category->id ?>"
+                <?= (int) old('category') === $category->id ? 'selected' : '' ?>
+            >
+                <?= htmlspecialchars($category->name) ?>
+            </option>
+        <?php endforeach ;?>
+    </select>
+    <!-- validation message -->
+    <?php if(error('category')) : ?>
+        <small class="invalid-feedback"><?= error('category') ?></small>
+    <?php endif ; ?>
+</div>
