@@ -23,6 +23,26 @@ class ProductRepository implements ProductRepositoryInterface
         return $this->db->totalCount('products');
     }
 
+    public function getWithCategories()
+    {
+        $db = $this->db->connect();
+        $sql = "
+            SELECT products.*,
+                    GROUP_CONCAT(c.name SEPARATOR ',') AS categories 
+                    FROM `products` 
+                    LEFT JOIN category_product on products.id = category_product.product_id 
+                    LEFT JOIN categories c on c.id = category_product.category_id
+                    GROUP BY products.id
+                ";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }catch(PDOException $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function find(string|int $id): ?Product
     {
         $data =  $this->db->findById($id, 'products');

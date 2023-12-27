@@ -33,7 +33,7 @@
                                 <tr>
                                     <th>#ID</th>
                                     <th>Title</th>
-                                    <th>Description</th>
+                                    <th>Categories</th>
                                     <th>Active</th>
                                     <th>Actions</th>
                                 </tr>
@@ -43,8 +43,15 @@
                                 <?php foreach($products as $product) :?>
                                     <tr>
                                         <td><?= $product->id ?></td>
-                                        <td><?= htmlspecialchars($product->title) ?></td>
-                                        <td><?= htmlspecialchars($product->description) ?></td>
+                                        <td>
+                                            <h6><?= htmlspecialchars($product->title) ?></h6>
+                                            <p class="fs-6 text-muted"><?= htmlspecialchars($product->description) ?></p>
+                                        </td>
+                                        <td>
+                                            <?php foreach(explode(",", $product->categories)  as $category) :?>
+                                                <span class="bg-primary text-white px-2 py-1 rounded-5" style="font-size: 12px;"><?= $category ?></span>
+                                            <?php endforeach ;?>
+                                        </td>
                                         <td>
                                             <?= 
                                                 $product->active ? 

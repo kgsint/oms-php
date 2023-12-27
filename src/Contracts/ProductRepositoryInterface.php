@@ -10,6 +10,8 @@ interface ProductRepositoryInterface
 
     public function getCount(): int;
 
+    public function getWithCategories();
+
     public function find(string|int $id): ?Product;
 
     /**

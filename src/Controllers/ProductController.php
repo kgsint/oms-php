@@ -25,7 +25,9 @@ class ProductController
 
     public function index()
     {
-        $products = $this->productRepo->getAll();
+        $products = $this->productRepo->getWithCategories();
+
+        // dd($products[0]->categories, true);
 
         return View::make('products.index', compact('products'));
     }
