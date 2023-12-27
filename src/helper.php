@@ -2,6 +2,7 @@
 
 use App\Core\Auth;
 use App\Core\Session;
+use App\Core\View;
 use App\Models\User;
 
 // dump
@@ -81,3 +82,12 @@ function user(): ?User
     return auth()->user();
 }
 // end Auth class
+
+function abort(int $statusCode = 404): void
+{
+    http_response_code($statusCode);
+
+    View::make("errors.{$statusCode}");
+
+    exit;
+}

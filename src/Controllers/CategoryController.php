@@ -55,9 +55,9 @@ class CategoryController
 
     public function edit(): View
     {
-        // return back if no category is found,
+        // return 404 page if no category is found,
         if(!$category = $this->categoryRepo->find((int) $_GET['id'])) {
-            return redirect('/categories');
+            abort(404);
         }
 
         return View::make('categories.edit', compact('category'));
@@ -65,6 +65,12 @@ class CategoryController
 
     public function update()
     {
+        $id = (int) $_POST['id'];
+
+        // return 404 page if no category is found,
+        if(!$category = $this->categoryRepo->find($id)) {
+            abort(404);
+        }
         // validation
         CategoryUpdateRequest::validate($_POST);
 
