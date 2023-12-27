@@ -9,6 +9,7 @@ class Product
     public int $id;
     public string $title;
     public string $description;
+    public array $categories;
     public int $active;
     public DateTime $createdAt;
     public DateTime $updatedAt;

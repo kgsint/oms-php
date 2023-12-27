@@ -27,12 +27,12 @@ class ProductRepository implements ProductRepositoryInterface
     {
         $db = $this->db->connect();
         $sql = "
-            SELECT products.*,
+            SELECT p.*,
                     GROUP_CONCAT(c.name SEPARATOR ',') AS categories 
-                    FROM `products` 
-                    LEFT JOIN category_product on products.id = category_product.product_id 
-                    LEFT JOIN categories c on c.id = category_product.category_id
-                    GROUP BY products.id
+                    FROM `products` AS p 
+                    LEFT JOIN category_product AS pivot on p.id = pivot.product_id 
+                    LEFT JOIN categories AS c on c.id = pivot.category_id
+                    GROUP BY p.id
                 ";
         try {
             $stmt = $db->prepare($sql);
@@ -43,9 +43,31 @@ class ProductRepository implements ProductRepositoryInterface
         }
     }
 
-    public function find(string|int $id): ?Product
+    public function find(string|int $id): Product|string
     {
         $data =  $this->db->findById($id, 'products');
+
+        try {
+            $db = $this->db->connect();
+
+            $sql = "
+                    SELECT p.*,
+                            GROUP_CONCAT(c.name SEPARATOR ',') AS categories
+                            from `products` AS p
+                        LEFT JOIN `category_product` AS pivot on p.id = pivot.product_id
+                        LEFT JOIN `categories` AS c on pivot.category_id = c.id
+                        WHERE p.id = :id
+                ";
+
+            $stmt = $db->prepare($sql);
+            $stmt->execute([
+                ':id' => $id,
+            ]);
+
+            $data = $stmt->fetch();
+        }catch(PDOException $e) {
+            return $e->getMessage();
+        }
 
         // if not found, return null
         if(! $data) {
@@ -56,6 +78,7 @@ class ProductRepository implements ProductRepositoryInterface
         $product->id = $data->id;
         $product->title = $data->title;
         $product->description = $data->description;
+        $product->categories = explode(',', $data->categories); // string to array
         $product->active = (int) $data->active;
         $product->createdAt = mysqlTimestampToDateTime($data->created_at);
         $product->updatedAt = mysqlTimestampToDateTime($data->updated_at);
@@ -83,6 +106,25 @@ class ProductRepository implements ProductRepositoryInterface
 
             return (int) $db->lastInsertId();
         }catch(PDOException $e){
+            return $e->getMessage();
+        }
+    }
+
+    public function disassociateWithCategories(int $productId): int|string
+    {
+        try {
+            $sql = "
+                DELETE FROM `category_product` WHERE product_id=:product_id
+            ";
+
+            $db = $this->db->connect();
+            $stmt = $db->prepare($sql);
+            $stmt->execute([
+                ':product_id' => $productId,
+            ]);
+
+            return $stmt->rowCount();
+        }catch(PDOException $e) {
             return $e->getMessage();
         }
     }

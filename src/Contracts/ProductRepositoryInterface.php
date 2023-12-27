@@ -12,7 +12,7 @@ interface ProductRepositoryInterface
 
     public function getWithCategories();
 
-    public function find(string|int $id): ?Product;
+    public function find(string|int $id): Product|string;
 
     /**
      * @return $id of the currently created or updated product record
@@ -21,6 +21,8 @@ interface ProductRepositoryInterface
 
     // insert data into intermediate table category_product
     public function associateWithCategory($productId, $categoryId): int|string;
+
+    public function disassociateWithCategories(int $productId);
 
     public function delete(Product $product);
 }

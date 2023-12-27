@@ -59,6 +59,15 @@ class ProductController
         }
 
         return redirect('/products/new');
-        
+    }
+
+    public function edit()
+    {
+        $id = (int) $_GET['id'];
+
+        return View::make('products.edit', [
+            'product' => $this->productRepo->find($id),
+            'categories' => $this->categoryRepo->getAll(),
+        ]);
     }
 }
