@@ -1,6 +1,6 @@
 # OMS
 
-Simple order Managment System with PHP utilizing MVC pattern (note: this is not meant to be used in `production`)
+Simple order Managment System with PHP utilizing MVC pattern
 
 ## Installation and Setup 
 
