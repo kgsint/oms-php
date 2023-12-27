@@ -45,7 +45,7 @@ class CategoryController
         $category = new Category;
         $category->name = $_POST['name'];
         $category->slug = convertToSlug($_POST['name']);
-        $category->active = (int) isset($_POST['active']) ??  1;
+        $category->active = (int) isset($_POST['active']);
 
 
         $this->categoryRepo->save($category);
