@@ -55,8 +55,6 @@ class OrderRepository implements OrderRepositoryInterface
         $order = new Order;
         $order->id = $data->id;
         $order->uuid = $data->uuid;
-        $order->username = $data->username;
-        $order->email = $data->email;
         $order->status = $data->status;
         $order->createdAt = mysqlTimestampToDateTime($data->created_at);
         $order->updatedAt = mysqlTimestampToDateTime($data->updated_at);

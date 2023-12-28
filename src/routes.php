@@ -40,6 +40,7 @@ $router->delete('/products', [ProductController::class, 'delete'])->middleware('
 
 // orders 
 $router->get('/orders', [OrderController::class, 'index'])->middleware('auth');
+$router->patch('/orders', [OrderController::class, 'update'])->middleware('auth');
 $router->delete('/orders', [OrderController::class, 'delete'])->middleware('auth');
 
 return $router;

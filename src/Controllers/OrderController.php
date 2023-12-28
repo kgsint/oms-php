@@ -6,6 +6,7 @@ use App\Contracts\OrderRepositoryInterface;
 use App\Contracts\ProductRepositoryInterface;
 use App\Core\App;
 use App\Core\View;
+use App\Models\Order;
 
 class OrderController 
 {
@@ -21,6 +22,22 @@ class OrderController
         return View::make('orders.index', [
             'orders' => $this->orderRepo->getWithProduct(),
         ]);
+    }
+
+    public function update()
+    {
+        $id = (int) $_POST['id'];
+
+        if(! $order = $this->orderRepo->find($id)) {
+            abort(404);
+        }
+
+        // set status
+        $order->status = (int) $_POST['status'];
+        // update
+        $this->orderRepo->save($order);
+
+        return redirect('/orders');
     }
 
     public function delete()

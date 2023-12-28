@@ -213,6 +213,9 @@ trait WithDataMapper
             'products' => "UPDATE `{$table}` 
                                     SET title=:title, description=:description, price=:price, active=:active, updated_at=NOW()
                                     WHERE id=:id",
+            'orders' => "UPDATE `{$table}` 
+                                    SET status=:status 
+                                    WHERE id=:id",
         };
     }
 
@@ -241,6 +244,10 @@ trait WithDataMapper
                 ':description' => $model->description,
                 ':price' => $model->price,
                 ':active' => $model->active,
+            ],
+            'orders' => [
+                ':id' => $model->id,
+                ':status' => $model->status,
             ],
         };
     }

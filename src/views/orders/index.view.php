@@ -56,17 +56,47 @@
                                         <td>
                                             <?= 
                                                 match((int)$order->status) {
-                                                    STATUS_PENDING => 'Pending',
-                                                    STATUS_SHIPPED => 'Shipped',
-                                                    STATUS_DELIVERED => 'Delivered',
-                                                    STATUS_CANCELLED => 'Cancelled',
-                                                    default => 'n/a',
+                                                    STATUS_PENDING => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-secondary rounded-3 text-secondary fw-bold">Pending</span>',
+                                                    STATUS_SHIPPED => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-warning text-secondary rounded-3 border border-1 fw-bold">Shipped</span>',
+                                                    STATUS_DELIVERED => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-success rounded-3 text-secondary fw-bold">Delivered</span>',
+                                                    STATUS_CANCELLED => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-danger rounded-3 text-secondary fw-bold">Cancelled</span>',
                                                 };
                                             ?>
                                         </td>
     
                                         <td>
                                             <div class="d-flex align-items-center">
+                                                <!-- update status -->
+                                                <form action="/orders" method="POST">
+                                                    <input type="hidden" name="_method" value="PATCH">
+                                                    <input type="hidden" name="id" value="<?= $order->id ?>">
+                                                    <select name="status" onchange="this.form.submit()" class="form-select" style="cursor: pointer;">
+                                                        <option 
+                                                            value="<?= STATUS_PENDING ?>"
+                                                            <?= $order->status == STATUS_PENDING ? 'selected' : '' ?>
+                                                        >
+                                                            Pending
+                                                        </option>
+                                                        <option 
+                                                            value="<?= STATUS_SHIPPED ?>"
+                                                            <?= $order->status == STATUS_SHIPPED ? 'selected' : '' ?>
+                                                        >
+                                                            Shipped
+                                                        </option>
+                                                        <option 
+                                                            value="<?= STATUS_DELIVERED ?>"
+                                                            <?= $order->status == STATUS_DELIVERED ? 'selected' : '' ?>
+                                                        >
+                                                            Delivered
+                                                        </option>
+                                                        <option 
+                                                            value="<?= STATUS_CANCELLED ?>"
+                                                            <?= $order->status == STATUS_CANCELLED ? 'selected' : '' ?>
+                                                        >
+                                                            Cancelled
+                                                        </option>
+                                                    </select>
+                                                </form>
                                                 <form method="POST" action="/orders">
                                                         <input type="hidden" name="_method" value="DELETE" >
                                                         <input type="hidden" value="<?= $order->id ?>" name="id" >
