@@ -1,11 +1,13 @@
 <?php
 
 use App\Contracts\CategoryRepositoryInterface;
+use App\Contracts\OrderRepositoryInterface;
 use App\Contracts\ProductRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Core\App;
 use App\Core\Database\Database;
 use App\Repositories\CategoryRepository;
+use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\UserRepository;
 use Dotenv\Dotenv;
@@ -28,5 +30,6 @@ $app = new App($router);
 $app->bind(UserRepositoryInterface::class, fn() => new UserRepository(new Database));
 $app->bind(CategoryRepositoryInterface::class, fn() => new CategoryRepository(new Database));
 $app->bind(ProductRepositoryInterface::class, fn() => new ProductRepository(new Database));
+$app->bind(OrderRepositoryInterface::class, fn() => new OrderRepository(new Database));
 
 return $app;

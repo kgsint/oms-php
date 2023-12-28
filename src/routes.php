@@ -3,9 +3,10 @@
 use App\Core\Router;
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
+use App\Controllers\OrderController;
 use App\Controllers\UsersController;
-use App\Controllers\CategoryController;
 use App\Controllers\ProductController;
+use App\Controllers\CategoryController;
 
 $router = new Router;
 
@@ -35,5 +36,8 @@ $router->get('/products/new', [ProductController::class, 'create'])->middleware(
 $router->post('/products', [ProductController::class, 'store'])->middleware('auth');
 $router->get('/products/edit', [ProductController::class, 'edit'])->middleware('auth');
 $router->patch('/products', [ProductController::class, 'update'])->middleware('auth');
+
+// orders 
+$router->get('/orders', [OrderController::class, 'index'])->middleware('auth');
 
 return $router;
