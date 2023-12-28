@@ -42,6 +42,22 @@
                                         <small class="invalid-feedback"><?= error('description') ?></small>
                                     <?php endif ; ?>
                                 </div>
+                                <!-- price -->
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">Price</label>
+                                    <input 
+                                        type="number" 
+                                        name="price" 
+                                        id="price" 
+                                        class="form-control <?= error('price') ? 'is-invalid' : '' ?>"
+                                        value="<?= old('price') ?>" 
+                                        autocomplete="off"
+                                    >
+                                    <!-- validation message -->
+                                    <?php if(error('price')) : ?>
+                                        <small class="invalid-feedback"><?= error('price') ?></small>
+                                    <?php endif ; ?>
+                                </div>
                                 <!-- categories -->
                                 <div class="mb-3">
                                     <label for="" class="form-label">Please select category or categories</label>

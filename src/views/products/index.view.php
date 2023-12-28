@@ -45,7 +45,8 @@
                                         <td><?= $product->id ?></td>
                                         <td>
                                             <h6><?= htmlspecialchars($product->title) ?></h6>
-                                            <p class="fs-6 text-muted"><?= htmlspecialchars($product->description) ?></p>
+                                            <p class="text-muted" style="font-size:14px"><?= htmlspecialchars($product->description) ?></p>
+                                            <p class="fw-bold text-muted" style="font-size: 13px;"><?= htmlspecialchars($product->price) ?>MMK</p>
                                         </td>
                                         <td>
                                             <?php foreach(explode(",", $product->categories)  as $category) :?>
@@ -56,7 +57,7 @@
                                             <?= 
                                                 $product->active ? 
                                                     '<span class="text-success">Active</span>' : 
-                                                    '<span class="text-danger">Not Active</span>' 
+                                                    '<span class="text-danger">Inactive</span>' 
                                             ?>
                                         </td>
                                         <td>

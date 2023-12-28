@@ -80,6 +80,7 @@ class ProductRepository implements ProductRepositoryInterface
         $product->id = $data->id;
         $product->title = $data->title;
         $product->description = $data->description;
+        $product->price = $data->price;
         $product->categories = explode(',', $data->categories); // string to array
         $product->active = (int) $data->active;
         $product->createdAt = mysqlTimestampToDateTime($data->created_at);

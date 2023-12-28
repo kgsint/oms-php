@@ -5,13 +5,10 @@ namespace App\Controllers;
 use App\Contracts\CategoryRepositoryInterface;
 use App\Contracts\ProductRepositoryInterface;
 use App\Core\App;
-use App\Core\Database\Database;
 use App\Core\View;
 use App\Http\FormRequests\ProductStoreRequest;
 use App\Http\FormRequests\ProductUpdateRequest;
 use App\Models\Product;
-use App\Repositories\CategoryRepository;
-use App\Repositories\ProductRepository;
 
 class ProductController 
 {
@@ -49,6 +46,7 @@ class ProductController
         $product = new Product;
         $product->title = $_POST['title'];
         $product->description = $_POST['description'];
+        $product->price = (int) $_POST['price'];
         $product->active = (int) isset($_POST['active']);
 
         // save to products table
@@ -92,6 +90,7 @@ class ProductController
         // set product model
         $product->title = $_POST['title'];
         $product->description = $_POST['description'];
+        $product->price = (int) $_POST['price'];
         $product->active = (int) isset($_POST['active']);
         // update
         $this->productRepo->save($product);

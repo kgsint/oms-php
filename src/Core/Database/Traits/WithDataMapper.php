@@ -169,8 +169,8 @@ trait WithDataMapper
                                             (name, slug, active, created_at, updated_at) 
                                             VALUES(:name, :slug, :active, NOW(), NOW())",
             'products' => "INSERT INTO `{$table}`
-                                            (title, description, active, created_at, updated_at) 
-                                            VALUES(:title, :description, :active, NOW(), NOW())",
+                                            (title, description, price, active, created_at, updated_at) 
+                                            VALUES(:title, :description, :price, :active, NOW(), NOW())",
         };
     }
 
@@ -194,6 +194,7 @@ trait WithDataMapper
             'products' => [
                 ':title' => $model->title,
                 ':description' => $model->description,
+                ':price' => $model->price,
                 ':active' => $model->active,
             ]
         };
@@ -210,7 +211,7 @@ trait WithDataMapper
                                         SET name=:name, slug=:slug, active=:active, updated_at=NOW()
                                         WHERE id=:id",
             'products' => "UPDATE `{$table}` 
-                                    SET title=:title, description=:description, active=:active, updated_at=NOW()
+                                    SET title=:title, description=:description, price=:price, active=:active, updated_at=NOW()
                                     WHERE id=:id",
         };
     }
@@ -238,6 +239,7 @@ trait WithDataMapper
                 ':id' => $model->id,
                 ':title' => $model->title,
                 ':description' => $model->description,
+                ':price' => $model->price,
                 ':active' => $model->active,
             ],
         };
