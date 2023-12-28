@@ -15,7 +15,7 @@ interface OrderRepositoryInterface
     public function find(string|int $id): Order|null|string;
 
     /**
-     * @return $id of the currently created or updated product record
+     * @return $id of the currently updated order record
      */
     public function save(Order $order): int;
 
