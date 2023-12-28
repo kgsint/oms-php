@@ -13,4 +13,11 @@ class Session
     {
         return $_SESSION['_flash']['old'][$key] ?? '';
     }
+
+    public static function flush()
+    {
+        if(isset($_SESSION['_flash'])) {
+            unset($_SESSION['_flash']);
+        }
+    }
 }

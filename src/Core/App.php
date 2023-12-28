@@ -37,6 +37,13 @@ class App
     // run app
     public function run()
     {
+        $this->resolveRouter();
+        // reset validation errors and old values
+        Session::flush();
+    }
+
+    private function resolveRouter()
+    {
         // resolve route
         try {
             // just uri exclude query strings
@@ -46,6 +53,7 @@ class App
 
             $this->router->resolve($uri, $requestMethod);
         }catch(Error $e) {
+            // optional error message display
             if($_ENV['APP_DEBUG'] === "true") {
                 print($e->getMessage());
                 exit;
@@ -60,11 +68,5 @@ class App
             header('Location:' . $_SERVER['HTTP_REFERER'], response_code: 302);
             exit;
         }
-
-        // reset validation errors and old values
-        if(isset($_SESSION['_flash'])) {
-            unset($_SESSION['_flash']);
-        }
     }
-    
 }
