@@ -20,6 +20,11 @@ class OrderRepository implements OrderRepositoryInterface
         return $this->db->rows('orders');
     }
 
+    public function getCount(): int
+    {
+        return $this->db->totalCount('orders');
+    }
+
     public function getWithProduct(): array|string
     {
         try {

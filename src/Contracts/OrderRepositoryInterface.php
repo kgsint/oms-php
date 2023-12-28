@@ -10,6 +10,8 @@ interface OrderRepositoryInterface
 
     public function getWithProduct(): array|string;
 
+    public function getCount(): int;
+
     public function find(string|int $id): Order|null|string;
 
     /**
