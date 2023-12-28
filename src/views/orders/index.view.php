@@ -33,12 +33,13 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Product</th>
-                                    <th>Total</th>
+                                    <th>User's name</th>
+                                    <th>User's email</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 
-                            <?php if(count([1])) :?>
+                            <?php if(count($orders)) :?>
                                 <!-- loop -->
                                 <?php foreach($orders as $order) :?>
                                     <tr>
@@ -47,7 +48,10 @@
                                             <h6><?= htmlspecialchars($order->product) ?></h6>
                                         </td>
                                         <td>
-                                            <?= htmlspecialchars($order->total) ?>
+                                            <?= htmlspecialchars($order->username) ?>
+                                        </td>
+                                        <td>
+                                            <?= htmlspecialchars($order->email) ?>
                                         </td>
                                         <td>
                                             <?= 
@@ -75,7 +79,7 @@
                                 <!-- when there is no product record -->
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="5" class="text-center">No Product found</td>
+                                    <td colspan="5" class="text-center">No Order yet</td>
                                 </tr>
                             <?php endif; ?>
                             </table>
