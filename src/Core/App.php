@@ -2,15 +2,14 @@
 
 namespace App\Core;
 
-use App\Contracts\UserRepositoryInterface;
 use App\Core\Container;
-use App\Core\Database\Database;
 use App\Exceptions\ValidationException;
 use App\Exceptions\ViewNotFoundException;
 use App\Exceptions\ClassNotFoundException;
 use App\Exceptions\RouteNotFoundException;
 use App\Exceptions\MethodNotFoundException;
-use App\Repositories\UserRepository;
+use Error;
+use PDOException;
 
 class App 
 {
@@ -46,9 +45,13 @@ class App
             $requestMethod = isset($_POST['_method']) ? strtoupper($_POST['_method']) : $_SERVER['REQUEST_METHOD'];
 
             $this->router->resolve($uri, $requestMethod);
-        }catch(RouteNotFoundException | ViewNotFoundException | MethodNotFoundException | ClassNotFoundException $e) {
-            print($e->getMessage());
-            exit;
+        }catch(Error $e) {
+            if($_ENV['APP_DEBUG'] === "true") {
+                print($e->getMessage());
+                exit;
+            }else {
+                abort(500);
+            }
         }catch(ValidationException $e) {
             // assign validation errors and old values to session
             $_SESSION['_flash']['errors'] = $e->errors;
