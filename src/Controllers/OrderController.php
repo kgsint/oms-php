@@ -22,4 +22,18 @@ class OrderController
             'orders' => $this->orderRepo->getWithProduct(),
         ]);
     }
+
+    public function delete()
+    {
+        $id = (int) $_POST['id'];
+
+        if(! $order = $this->orderRepo->find($id)) {
+            abort(404);
+        }
+
+        // delete order
+        $this->orderRepo->delete($order);
+
+        return redirect('/orders');
+    }
 }
