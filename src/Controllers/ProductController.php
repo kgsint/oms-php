@@ -106,4 +106,21 @@ class ProductController
 
         return redirect('/products');
     }
+
+    public function delete()
+    {
+        $id = (int) $_POST['id'];
+
+        // if product is'nt found, abort
+        if(! $product = $this->productRepo->find($id)) {
+            abort(404);
+        };
+
+        // delete product
+        $this->productRepo->delete($product);
+        // delete related records in pivot table
+        $this->productRepo->disassociateWithCategories($id);
+
+        return redirect('/products');
+    }
 }
