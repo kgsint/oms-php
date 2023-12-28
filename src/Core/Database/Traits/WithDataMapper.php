@@ -184,7 +184,7 @@ trait WithDataMapper
                 ':password' => $model->password,
                 ':address' => $model->address,
                 ':phone' => $model->phone,
-                ':role_id' => $model?->role_id ?? 1,
+                ':role_id' => (int) $model?->roleId ?? 1,
             ],
             'categories' => [
                 ':name' => $model->name,

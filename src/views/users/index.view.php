@@ -11,7 +11,7 @@
                 <div class="">
                     <h2 class="h4 text-white">Users</h2>
 
-                    <div class="card mb-3" style="height:280px;">
+                    <div class="card mb-3">
                         <div class="card-body" style="overflow:auto;">
                             <div class="text-end mb-2" style="max-width: 400px;">
                                 <!-- search -->
@@ -34,6 +34,7 @@
                                     <th>#ID</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Role</th>
                                     <th>Address</th>
                                     <th>Phone</th>
                                     <th>Actions</th>
@@ -46,6 +47,13 @@
                                         <td><?= htmlspecialchars($user->id) ?></td>
                                         <td><?= htmlspecialchars($user->name) ?></td>
                                         <td><?= htmlspecialchars($user->email) ?></td>
+                                        <td>
+                                            <?= match($user->role_id) {
+                                                USER => 'user',
+                                                ADMIN => 'admin',
+                                                MANAGER => 'manager',
+                                            } ?>
+                                        </td>
                                         <td><?= htmlspecialchars($user->address) ?></td>
                                         <td><?= htmlspecialchars($user->phone) ?></td>
                                         <td>
