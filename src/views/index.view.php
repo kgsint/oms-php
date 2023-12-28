@@ -27,7 +27,7 @@
                 <div class="col">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h3 class="card-title">2,354,353</h3>
+                                <h3 class="card-title"><?= $orders_count ?></h3>
                                 <span class="text-muted">
                                     Total Orders
                                 </span>
