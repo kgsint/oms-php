@@ -8,7 +8,7 @@ interface OrderRepositoryInterface
 {
     public function getAll(): array;
 
-    public function getWithProduct(): array|string;
+    public function getWithProductAndUser($Limit = null): array|string;
 
     public function getCount(): int;
 

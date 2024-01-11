@@ -25,7 +25,7 @@ class OrderRepository implements OrderRepositoryInterface
         return $this->db->totalCount('orders');
     }
 
-    public function getWithProduct(): array|string
+    public function getWithProductAndUser($limit = null): array|string
     {
         try {
             $sql = "
@@ -36,7 +36,12 @@ class OrderRepository implements OrderRepositoryInterface
                 FROM `orders`
                 LEFT JOIN `products` ON orders.product_id = products.id
                 LEFT JOIN `users` on orders.user_id = users.id
+                ORDER BY created_at, id DESC
             ";
+
+            if($limit) {
+                $sql .= " LIMIT {$limit}";
+            }
 
             $db = $this->db->connect();
             $stmt = $db->prepare($sql);

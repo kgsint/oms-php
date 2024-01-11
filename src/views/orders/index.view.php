@@ -55,12 +55,7 @@
                                         </td>
                                         <td>
                                             <?= 
-                                                match((int)$order->status) {
-                                                    STATUS_PENDING => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-secondary rounded-3 text-secondary fw-bold">Pending</span>',
-                                                    STATUS_SHIPPED => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-warning text-secondary rounded-3 border border-1 fw-bold">Shipped</span>',
-                                                    STATUS_DELIVERED => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-success rounded-3 text-secondary fw-bold">Delivered</span>',
-                                                    STATUS_CANCELLED => '<span style="font-size: 12px;" class="px-2 py-1 alert alert-danger rounded-3 text-secondary fw-bold">Cancelled</span>',
-                                                };
+                                                \App\Models\Presenter\OrderPresenter::present((int) $order->status)
                                             ?>
                                         </td>
     
@@ -70,7 +65,12 @@
                                                 <form action="/orders" method="POST">
                                                     <input type="hidden" name="_method" value="PATCH">
                                                     <input type="hidden" name="id" value="<?= $order->id ?>">
-                                                    <select name="status" onchange="this.form.submit()" class="form-select" style="cursor: pointer;">
+                                                    <select 
+                                                        name="status" 
+                                                        onchange="this.form.submit()" 
+                                                        class="form-select" 
+                                                        style="cursor: pointer;"
+                                                    >
                                                         <option 
                                                             value="<?= STATUS_PENDING ?>"
                                                             <?= $order->status == STATUS_PENDING ? 'selected' : '' ?>

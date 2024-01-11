@@ -8,10 +8,14 @@ trait WithDataMapper
 {    
 
     // all records
-    public function rows(string $table): array|string
+    public function rows(string $table, $orderBy = 'DESC', $limit = null): array|string
     {
         try {
-            $sql = "SELECT * FROM `{$table}`";
+            $sql = "SELECT * FROM `{$table}` ORDER BY id {$orderBy}";
+            // if $limit is defined,
+            if($limit) {
+                $sql .= " LIMIT {$limit}";
+            }
 
             $this->db = $this->connect();
             $stmt = $this->db->prepare($sql);

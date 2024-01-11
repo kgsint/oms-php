@@ -27,6 +27,7 @@ class HomeController
             'users_count' => $this->userRepo->getCount(),
             'products_count' => $this->productRepo->getCount(),
             'orders_count' => $this->orderRepo->getCount(),
+            'orders' => $this->orderRepo->getWithProductAndUser(5),
         ]);
     }
 }

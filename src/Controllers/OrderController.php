@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Contracts\OrderRepositoryInterface;
-use App\Contracts\ProductRepositoryInterface;
 use App\Core\App;
 use App\Core\View;
 use App\Models\Order;
@@ -20,7 +19,7 @@ class OrderController
     public function index()
     {
         return View::make('orders.index', [
-            'orders' => $this->orderRepo->getWithProduct(),
+            'orders' => $this->orderRepo->getWithProductAndUser(),
         ]);
     }
 
