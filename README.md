@@ -1,18 +1,23 @@
 # OMS
 
-Simple yet clean and concise order management system with PHP utilizing MVC pattern
+Simple order management system with PHP utilizing MVC pattern
+
+## Requirement 
+`php >= 8.2`
 
 ## Installation and Setup 
 
-clone this repo with `git clone https://github.com/kgsint/oms-php.git`
+clone this repo with:
 ```bash
-composer install
+git clone https://github.com/kgsint/oms-php.git
 ```
-copy `.env.example` to `.env`
+
+And then, run:
 ```bash
-cp .env.example .env
+composer setup
 ```
-Create a local database called `order_ms` and export tables from `/sql/tables/`
+
+Create a local database called `order_ms` and import tables from `/sql/tables/`
 
 
 To serve locally, simply run 
