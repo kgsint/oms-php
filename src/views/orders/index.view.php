@@ -9,7 +9,7 @@
 
            <div class="container-fluid mt-3 p-4">
                 <div class="">
-                    <h2 class="h4 text-white">Products</h2>
+                    <h2 class="h4 text-white">Order</h2>
 
                     <div class="card mb-3">
                         <div class="card-body" style="overflow:auto;">
@@ -112,11 +112,9 @@
                                     <td colspan="5" class="text-center">No Order yet</td>
                                 </tr>
                             <?php endif; ?>
-                            </table>
-
-                            
-                            </div>
+                            </table>  
                         </div>
+                    </div>
                 </div>
            </div>
         </main>
