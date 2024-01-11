@@ -26,5 +26,5 @@ php -S localhost:<portnumber> -t public
 ```
 To run the tests: 
 ```bash
-./vendor/bin/pest
+composer test
 ```
