@@ -4,7 +4,7 @@ namespace App\Core\Database\Traits;
 
 use PDOException;
 
-trait WithDataMapper 
+trait MySqlDataMapper 
 {    
 
     // all records

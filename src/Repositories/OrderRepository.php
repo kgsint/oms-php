@@ -2,18 +2,26 @@
 
 namespace App\Repositories;
 
-use App\Contracts\OrderRepositoryInterface;
 use App\Core\App;
-use App\Core\Database\Database;
-use App\Models\Order;
 use PDOException;
+use App\Models\Order;
+use App\Core\Database\MySQL;
+use App\Core\Database\Database;
+use App\Contracts\OrderRepositoryInterface;
 
 class OrderRepository implements OrderRepositoryInterface
 {
+    /**
+     * $db object might change according to database connection|driver (pgsql, sqlite) etc
+     * doc block to autocomple methods
+     * @var MySQL $db
+    */
+    private $db;
 
-    public function __construct(
-        private Database $db,
-    ){}
+    public function __construct()
+    {
+        $this->db = App::resolve(Database::class);
+    }
 
     public function getAll(): array
     {

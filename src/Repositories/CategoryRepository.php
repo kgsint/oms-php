@@ -3,14 +3,24 @@
 namespace App\Repositories;
 
 use App\Contracts\CategoryRepositoryInterface;
+use App\Core\App;
 use App\Core\Database\Database;
 use App\Models\Category;
 
 class CategoryRepository implements CategoryRepositoryInterface
 {
-    public function __construct(
-        private Database $db,
-    ){}
+    /**
+     * $db object might change according to database connection|driver (pgsql, sqlite) etc
+     * doc block to autocomple methods
+     * @var MySQL $db
+    */
+    private Database $db;
+
+    public function __construct()
+    {
+        // dd(App::resolve(Database::class));
+        $this->db = App::resolve(Database::class);
+    }
 
     public function getAll(): array
     {

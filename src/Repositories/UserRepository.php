@@ -1,15 +1,25 @@
 <?php
 namespace App\Repositories;
 
-use App\Contracts\UserRepositoryInterface;
-use App\Core\Database\Database;
 use App\Models\User;
+use App\Core\Database\MySQL;
+use App\Core\Database\Database;
+use App\Contracts\UserRepositoryInterface;
+use App\Core\App;
 
 class UserRepository implements UserRepositoryInterface
 {
-    public function __construct(
-        private Database $db,
-    ){}
+    /**
+     * $db object might change according to data connection|driver (pgsql, sqlite) etc
+     * doc block to autocomple methods
+     * @var MySQL $db
+    */
+    private Database $db;
+    
+    public function __construct()
+    {
+        $this->db = App::resolve(Database::class);
+    }
 
     public function getAll(): array|string
     {

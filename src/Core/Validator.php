@@ -6,11 +6,16 @@ use App\Core\Database\Database;
 
 class Validator 
 {
+    /**
+     * $db object might change according to database connection|driver (pgsql, sqlite)
+     * doc block to autocomple methods
+     * @var MySQL $db
+    */
     private Database $db;
 
     public function __construct()
     {
-        $this->db = new Database;
+        $this->db = App::resolve(Database::class);
     }
     public static function required(mixed $input, $min = 1, $max = INF): bool
     {

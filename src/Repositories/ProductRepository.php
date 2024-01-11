@@ -2,16 +2,26 @@
 
 namespace App\Repositories;
 
-use App\Contracts\ProductRepositoryInterface;
-use App\Core\Database\Database;
-use App\Models\Product;
 use PDOException;
+use App\Models\Product;
+use App\Core\Database\MySQL;
+use App\Core\Database\Database;
+use App\Contracts\ProductRepositoryInterface;
+use App\Core\App;
 
 class ProductRepository implements ProductRepositoryInterface
 {
-    public function __construct(
-        private Database $db,
-    ){}
+    /**
+     * $db object might change according to database connection|driver (pgsql, sqlite) etc
+     * doc block to autocomple methods
+     * @var MySQL $db
+    */
+    private Database $db;
+
+    public function __construct()
+    {
+        $this->db = App::resolve(Database::class);
+    }
 
     public function getAll(): array
     {

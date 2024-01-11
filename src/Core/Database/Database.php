@@ -7,9 +7,7 @@ use PDOException;
 use App\Core\Database\Traits\WithDataMapper;
 
 class Database
-{
-    use WithDataMapper;
-    
+{    
     private string $connection;
     private string $host;
     private string $name;
