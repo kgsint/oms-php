@@ -1,9 +1,8 @@
 <?php
 
-use App\Core\View;
 use Dotenv\Dotenv;
 use App\Core\Router;
-use App\Controllers\HomeController;
+use Tests\TestController;
 use App\Exceptions\RouteNotFoundException;
 
 beforeEach(function() {
@@ -21,18 +20,12 @@ it('resolves callback action', function () {
 });
 
 it('resolves array action', function () {
-    require __DIR__ . "/../../src/constants.php";
     $router = new Router;
 
-    $router->get('/', [HomeController::class, 'index']);
-    $_SERVER['REQUEST_URI'] = '/';
-    $_SERVER['REQUEST_METHOD'] = 'GET';
+    $router->get('/', [TestController::class, 'test']);
 
     test()
-            ->assertInstanceOf(View::class, 
-                            $router->resolve($_SERVER['REQUEST_URI'], 
-                            $_SERVER['REQUEST_METHOD'])
-                        );
+            ->assertEquals('test', $router->resolve('/', 'GET'));
 });
 
 it('throws route not found exception when request uri does not exist', function () {

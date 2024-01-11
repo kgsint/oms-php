@@ -2,7 +2,8 @@
     "name": "kgsint/oms",
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "Tests\\": "tests/"
         },
         "files": [
             "src/helper.php"
