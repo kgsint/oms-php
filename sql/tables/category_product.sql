@@ -7,12 +7,15 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE `category_product` (
+CREATE TABLE
+`category_product` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
-  `category_id` int NOT NULL,
-  `product_id` int NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `category_id` int unsigned NOT NULL,
+  `product_id` int unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `pivot_category_id_foreign` FOREIGN KEY(`category_id`) REFERENCES `categories`(`id`) ON DELETE CASCADE,
+  CONSTRAINT `pivot_product_id_foreign` FOREIGN KEY(`product_id`) REFERENCES `products`(`id`) ON DELETE CASCADE
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci
 
 
 
