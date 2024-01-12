@@ -2,9 +2,10 @@
 
 namespace App\Core\Database;
 
-use App\Core\Database\Traits\MySqlDataMapper;
+use App\Contracts\DataOperationsInterface;
+use App\Core\Database\Traits\WithMySqlOperations;
 
-class MySQL extends Database
+class MySQL extends Database implements DataOperationsInterface
 {
-    use MySqlDataMapper;
+    use WithMySqlOperations;
 }
