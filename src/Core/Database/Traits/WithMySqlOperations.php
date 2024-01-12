@@ -4,7 +4,7 @@ namespace App\Core\Database\Traits;
 
 use PDOException;
 
-trait MySqlDataMapper 
+trait WithMySqlOperations 
 {    
 
     // all records
@@ -73,7 +73,7 @@ trait MySqlDataMapper
     }
 
     // fetch by id
-    public function findById(string | int $id, string $table): object|bool
+    public function findById(string|int $id, string $table): object|bool
     {
         try {
             $sql = "SELECT * FROM `{$table}` WHERE id=:id";
