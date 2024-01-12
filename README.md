@@ -5,7 +5,7 @@ Simple order management system with PHP utilizing MVC pattern and database layer
 >If you are not using MySQL, you can optionally switch another database layer by following the steps,
 
 > - In `.env` file, switch db connection, for example `DB_CONNECTION=pgsql`
->- Create your database layer in `\src\Core\Database` for example, `PostgreSql.php` and then implement
+>- Create your database layer in `\src\Core\Database` for example, `PostgreSql.php`, extend base `Database` class and then implement `App\Contracts\DataOperationsInterface` contract|interface
 >- register entry in `/src/bootstrap.php`
 
   ```php
