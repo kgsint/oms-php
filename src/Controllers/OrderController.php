@@ -36,7 +36,7 @@ class OrderController
         // update
         $this->orderRepo->save($order);
 
-        return redirect('/orders');
+        return redirectBack();
     }
 
     public function delete()

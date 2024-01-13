@@ -54,6 +54,12 @@ function redirect(string $uri, int $responseCode = 302): void
     exit;
 }
 
+function redirectBack(): void
+{
+    header('Location:' . $_SERVER['HTTP_REFERER'], response_code: 302);
+    exit;
+}
+
 // show validation error
 function error(string $key)
 {
