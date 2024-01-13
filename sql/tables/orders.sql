@@ -14,6 +14,7 @@ CREATE TABLE
   `user_id` int unsigned NOT NULL,
   `product_id` int unsigned,
   `status` smallint NOT NULL DEFAULT '1',
+  `quantity` int unsigned NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),

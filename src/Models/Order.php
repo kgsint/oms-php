@@ -12,6 +12,7 @@ class Order
     public ?string $username; // name of the user
     public ?string $email; // email of the user
     public int $status;
+    public int $quantity;
     public DateTime $createdAt;
     public DateTime $updatedAt;
 }

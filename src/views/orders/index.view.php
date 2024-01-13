@@ -20,7 +20,7 @@
                                         <input 
                                             name="s" type="text" 
                                             class="form-control" 
-                                            placeholder="Search Products..." 
+                                            placeholder="Search Orders..." 
                                             autocomplete="off" 
                                             value="<?= isset($_GET['s']) ? htmlspecialchars($_GET['s']) : '' ?>"
                                         />
@@ -36,6 +36,7 @@
                                     <th>User's name</th>
                                     <th>User's email</th>
                                     <th>Status</th>
+                                    <th>Quantity</th>
                                     <th>Actions</th>
                                 </tr>
                                 
@@ -58,7 +59,11 @@
                                                 \App\Models\Presenter\OrderPresenter::present((int) $order->status)
                                             ?>
                                         </td>
-    
+                                        <td class="text-center">
+                                            <?= 
+                                                htmlspecialchars($order->quantity)
+                                            ?>
+                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <!-- update status -->
@@ -109,7 +114,7 @@
                                 <!-- when there is no product record -->
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="5" class="text-center">No Order yet</td>
+                                    <td colspan="7" class="text-center">No Order yet</td>
                                 </tr>
                             <?php endif; ?>
                             </table>  
