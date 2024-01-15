@@ -2,6 +2,8 @@
 
 Simple order management system with PHP utilizing MVC pattern and database layer as MySQL. 
 
+![screenshot](/public/screen-shot.png)
+
 >If you are not using MySQL, you can optionally switch another database layer by following the steps,
 
 > - In `.env` file, switch db connection, for example `DB_CONNECTION=pgsql`
