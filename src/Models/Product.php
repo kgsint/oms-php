@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Core\Database\Factories\ProductFactory;
 use DateTime;
 
 class Product 
@@ -14,4 +15,9 @@ class Product
     public int $active;
     public DateTime $createdAt;
     public DateTime $updatedAt;
+
+    public static function factory(): ProductFactory
+    {
+        return new ProductFactory;
+    }
 }

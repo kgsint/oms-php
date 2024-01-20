@@ -8,7 +8,6 @@ use App\Core\View;
 use App\Http\FormRequests\CategoryStoreRequest;
 use App\Http\FormRequests\CategoryUpdateRequest;
 use App\Models\Category;
-use App\Repositories\CategoryRepository;
 
 class CategoryController 
 {

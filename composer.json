@@ -10,7 +10,8 @@
         ]
     },
     "require-dev": {
-        "pestphp/pest": "^2.28"
+        "pestphp/pest": "^2.28",
+        "fakerphp/faker": "^1.23"
     },
     "config": {
         "allow-plugins": {

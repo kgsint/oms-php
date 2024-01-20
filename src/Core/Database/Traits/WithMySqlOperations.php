@@ -175,6 +175,9 @@ trait WithMySqlOperations
             'products' => "INSERT INTO `{$table}`
                                             (title, description, price, active, created_at, updated_at) 
                                             VALUES(:title, :description, :price, :active, NOW(), NOW())",
+            'orders' => "INSERT INTO `{$table}`
+                                            (uuid, user_id, product_id, quantity, status, created_at, updated_at) 
+                                            VALUES(:uuid, :user_id, :product_id, :quantity, :status, NOW(), NOW())",
         };
     }
 
@@ -200,7 +203,14 @@ trait WithMySqlOperations
                 ':description' => $model->description,
                 ':price' => $model->price,
                 ':active' => $model->active,
-            ]
+            ],
+            'orders' => [
+                ':uuid' => $model->uuid,
+                ':user_id' => $model->userId,
+                ':product_id' => $model->productId,
+                ':quantity' => $model->quantity,
+                ':status' => $model->status,
+            ],
         };
     }
 
