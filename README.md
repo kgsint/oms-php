@@ -21,7 +21,8 @@ Simple order management system with PHP utilizing MVC pattern and database layer
   ```
 
 ## Requirement 
-`php >= 8.2`
+- `php >= 8.2`
+- `MySQL` | `MariaDB`
 
 ## Installation and Setup 
 
@@ -46,6 +47,10 @@ php serve
 or you can optionally run:
 ```bash
 php -S localhost:<portnumber> -t public
+```
+To populate data: 
+```php
+php populate.php
 ```
 To run the tests: 
 ```bash
